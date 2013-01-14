@@ -1,3 +1,4 @@
+- [ ] Implement ALL THE API calls from https://www.desktoppr.co/api
 - [ ] FGallery: "See all" doesn't set navigation title correctly.
 - [ ] Show a progress indicator during initial download
 - [ ] Save to camera roll
