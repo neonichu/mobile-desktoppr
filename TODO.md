@@ -1,0 +1,10 @@
+- [ ] FGallery: "See all" doesn't set navigation title correctly.
+- [ ] Show a progress indicator during initial download
+- [ ] Save to camera roll
+- [ ] Allow login for upload
+- [ ] Allow browsing users, random, etc.
+- [ ] About with licensing information for submodules
+- [ ] Clear name with desktoppr makers
+- [ ] App icon, launch images
+- [ ] iPhone 5 support
+- [ ] App Store release

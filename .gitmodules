@@ -1,0 +1,6 @@
+[submodule "vendor/FGallery"]
+	path = vendor/FGallery
+	url = https://github.com/gdavis/FGallery-iPhone.git
+[submodule "vendor/AFNetworking"]
+	path = vendor/AFNetworking
+	url = https://github.com/AFNetworking/AFNetworking.git
