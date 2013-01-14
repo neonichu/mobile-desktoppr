@@ -8,6 +8,7 @@
 
 #import "DesktopprPhotoSource.h"
 #import "DesktopprPicture.h"
+#import "DesktopprUser.h"
 #import "DesktopprWebService.h"
 
 @interface DesktopprPhotoSource ()
@@ -27,6 +28,7 @@
     if (self) {
         self.webService = [DesktopprWebService new];
         [self.webService wallpapersForUser:@"keithpitt"
+                                     count:20
                      withCompletionHandler:^(NSArray *pictures, NSError *error) {
                          if (pictures) {
                              self.pictures = pictures;
@@ -35,6 +37,24 @@
                             NSLog(@"Error: %@", error.localizedDescription);
                          }
                      }];
+
+        // For testing
+        [self.webService infoForUser:@"keithpitt" withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+            if (user) {
+                NSLog(@"User: %@", user.username);
+            } else {
+                NSLog(@"Error: %@", error.localizedDescription);
+            }
+        }];
+
+        [self.webService randomWallpaperForUser:@"keithpitt"
+                          withCompletionHandler:^(DesktopprPicture *picture, NSError *error) {
+                              if (picture) {
+                                  NSLog(@"Picture: %@", picture.fullsizeURL);
+                              } else {
+                                  NSLog(@"Error: %@", error.localizedDescription);
+                              }
+                          }];
     }
     return self;
 }

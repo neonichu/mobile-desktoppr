@@ -1,11 +1,16 @@
-- [ ] Implement ALL THE API calls from https://www.desktoppr.co/api
+- [X] Implement ALL THE API calls from https://www.desktoppr.co/api
+- [ ] Implement paging
+- [ ] Mock service
+- [ ] Use Grenobj for creating the model classes
+- [ ] Custom styling 
 - [ ] FGallery: "See all" doesn't set navigation title correctly.
+- [ ] FGallery: "See all" scrollView contentSize is too big
 - [ ] Show a progress indicator during initial download
 - [ ] Save to camera roll
-- [ ] Allow login for upload
+- [ ] Allow login for upload (not in the API, yet)
 - [ ] Allow browsing users, random, etc.
 - [ ] About with licensing information for submodules
-- [ ] Clear name with desktoppr makers
+- [ ] Come up with a proper name
 - [ ] App icon, launch images
 - [ ] iPhone 5 support
 - [ ] App Store release

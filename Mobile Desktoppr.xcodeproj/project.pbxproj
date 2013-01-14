@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69C40A5516A4598200E05322 /* DesktopprUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C40A5416A4598200E05322 /* DesktopprUser.m */; };
 		69E4BEF716A41B80004F8E3D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E4BEF616A41B80004F8E3D /* UIKit.framework */; };
 		69E4BEF916A41B81004F8E3D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E4BEF816A41B80004F8E3D /* Foundation.framework */; };
 		69E4BEFB16A41B81004F8E3D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E4BEFA16A41B81004F8E3D /* CoreGraphics.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69C40A5316A4598200E05322 /* DesktopprUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesktopprUser.h; sourceTree = "<group>"; };
+		69C40A5416A4598200E05322 /* DesktopprUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopprUser.m; sourceTree = "<group>"; };
 		69E4BEF216A41B80004F8E3D /* Mobile Desktoppr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Desktoppr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69E4BEF616A41B80004F8E3D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		69E4BEF816A41B80004F8E3D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -143,6 +146,8 @@
 				69E4BF2D16A41D94004F8E3D /* DesktopprPhotoSource.m */,
 				69E4BF5316A42248004F8E3D /* DesktopprPicture.h */,
 				69E4BF5416A42248004F8E3D /* DesktopprPicture.m */,
+				69C40A5316A4598200E05322 /* DesktopprUser.h */,
+				69C40A5416A4598200E05322 /* DesktopprUser.m */,
 				69E4BF4C16A41F2D004F8E3D /* DesktopprWebService.h */,
 				69E4BF4D16A41F2D004F8E3D /* DesktopprWebService.m */,
 			);
@@ -300,6 +305,7 @@
 				69E4BF4B16A41F08004F8E3D /* UIImageView+AFNetworking.m in Sources */,
 				69E4BF4E16A41F2D004F8E3D /* DesktopprWebService.m in Sources */,
 				69E4BF5516A42249004F8E3D /* DesktopprPicture.m in Sources */,
+				69C40A5516A4598200E05322 /* DesktopprUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +331,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -347,6 +354,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -401,6 +409,7 @@
 				69E4BF1216A41B81004F8E3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

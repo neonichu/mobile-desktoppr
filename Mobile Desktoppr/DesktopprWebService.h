@@ -8,10 +8,22 @@
 
 #import "AFHTTPClient.h"
 
+@class DesktopprPicture;
+@class DesktopprUser;
+
 typedef void(^DesktopprArrayBlock)(NSArray* pictures, NSError* error);
+typedef void(^DesktopprPictureBlock)(DesktopprPicture* picture, NSError* error);
+typedef void(^DesktopprUserBlock)(DesktopprUser* user, NSError* error);
 
 @interface DesktopprWebService : AFHTTPClient
 
--(void)wallpapersForUser:(NSString*)username withCompletionHandler:(DesktopprArrayBlock)block;
+@property (strong) NSString* apiToken;
+
+-(void)infoForUser:(NSString*)username withCompletionHandler:(DesktopprUserBlock)block;
+-(void)randomWallpaperWithCompletionHandler:(DesktopprPictureBlock)block;
+-(void)randomWallpaperForUser:(NSString*)username withCompletionHandler:(DesktopprPictureBlock)block;
+-(void)wallpapersWithCompletionHandler:(DesktopprArrayBlock)block count:(NSInteger)count;
+-(void)wallpapersForUser:(NSString*)username count:(NSInteger)count withCompletionHandler:(DesktopprArrayBlock)block;
+-(void)whoamiWithCompletionHandler:(DesktopprUserBlock)block;
 
 @end
