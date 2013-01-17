@@ -106,7 +106,12 @@
                   if (pictures.count >= count) {
                       block(pictures, nil);
                   } else {
-                      NSInteger nextPage = [responseObject[@"pagination"][@"next"] integerValue];
+                      id next = responseObject[@"pagination"][@"next"];
+                      if (next == [NSNull null]) {
+                          block(pictures, nil);
+                          return;
+                      }
+                      NSInteger nextPage = [next integerValue];
                       [self wallpapersAtPath:path page:nextPage addedToArray:pictures count:count withCompletionHandler:block];
                   }
               }

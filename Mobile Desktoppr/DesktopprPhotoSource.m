@@ -40,11 +40,10 @@
                                      count:40
                      withCompletionHandler:^(NSArray *pictures, NSError *error) {
                          if (pictures) {
-                             NSAssert(pictures.count == 40, @"Didn't get enough pictures.");
                              self.pictures = pictures;
                              [self.gallery reloadGallery];
                          } else {
-                            NSLog(@"Error: %@", error.localizedDescription);
+                             [UIAlertView bbu_showAlertWithError:error];
                          }
                      }];
 
