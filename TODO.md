@@ -1,5 +1,5 @@
 - [X] Implement ALL THE API calls from https://www.desktoppr.co/api
-- [ ] Implement paging
+- [X] Implement paging
 - [ ] Mock service
 - [ ] Use Grenobj for creating the model classes
 - [ ] Custom styling 

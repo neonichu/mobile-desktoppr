@@ -79,18 +79,22 @@
           }];
 }
 
--(void)wallpapersAtPath:(NSString*)path count:(NSInteger)count withCompletionHandler:(DesktopprArrayBlock)block {
-    NSAssert(count == 20, @"Paging not implemented.");
-
+-(void)wallpapersAtPath:(NSString*)path page:(NSInteger)page addedToArray:(NSMutableArray*)pictures count:(NSInteger)count
+  withCompletionHandler:(DesktopprArrayBlock)block {
     [self getPath:path
-       parameters:nil
+       parameters:@{ @"page": @(page) }
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if (block) {
-                  NSMutableArray* pictures = [NSMutableArray array];
                   for (NSDictionary* pictDict in responseObject[@"response"]) {
                       [pictures addObject:[[DesktopprPicture alloc] initWithDictionary:pictDict]];
                   }
-                  block(pictures, nil);
+                  
+                  if (pictures.count >= count) {
+                      block(pictures, nil);
+                  } else {
+                      NSInteger nextPage = [responseObject[@"pagination"][@"next"] integerValue];
+                      [self wallpapersAtPath:path page:nextPage addedToArray:pictures count:count withCompletionHandler:block];
+                  }
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -98,6 +102,10 @@
                   block(nil, error);
               }
           }];
+}
+
+-(void)wallpapersAtPath:(NSString*)path count:(NSInteger)count withCompletionHandler:(DesktopprArrayBlock)block {
+    [self wallpapersAtPath:path page:1 addedToArray:[NSMutableArray array] count:count withCompletionHandler:block];
 }
 
 -(void)wallpapersForUser:(NSString*)username count:(NSInteger)count withCompletionHandler:(DesktopprArrayBlock)block {
