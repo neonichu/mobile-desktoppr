@@ -27,6 +27,10 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:self.galleryVC];
     [self.window makeKeyAndVisible];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
+    [[UIToolbar appearance] setTintColor:[UIColor lightGrayColor]];
+    
     return YES;
 }
 
