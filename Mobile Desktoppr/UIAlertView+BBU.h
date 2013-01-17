@@ -11,5 +11,6 @@
 @interface UIAlertView (BBU)
 
 +(instancetype)bbu_showAlertWithError:(NSError*)error;
++(instancetype)bbu_showInfoWithMessage:(NSString*)message;
 
 @end

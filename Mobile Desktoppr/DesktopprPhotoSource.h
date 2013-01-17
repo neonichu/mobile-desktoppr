@@ -8,10 +8,13 @@
 
 #import "FGalleryViewController.h"
 
+@class DesktopprUser;
+
 @interface DesktopprPhotoSource : NSObject <FGalleryViewControllerDelegate>
 
 @property (strong) NSString* username;
 
+-(id)initWithUser:(DesktopprUser*)user;
 -(void)showRandomPicture;
 -(void)userListWithCompletionHandler:(void(^)(NSArray* objects, NSError* error))block;
 

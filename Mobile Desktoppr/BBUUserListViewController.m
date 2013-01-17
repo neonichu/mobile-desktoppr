@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Boris Bügling. All rights reserved.
 //
 
+#import "BBUGalleryViewController.h"
 #import "BBUUserListViewController.h"
 #import "DesktopprUser.h"
 
@@ -58,7 +59,9 @@ static NSString* const kCellIdentifier = @"UserCellIdentifier";
 #pragma mark - UITableView delegate methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Implement user page
+    DesktopprUser* user = self.users[indexPath.row];
+    BBUGalleryViewController* userGallery = [[BBUGalleryViewController alloc] initWithUser:user];
+    [self.navigationController pushViewController:userGallery animated:YES];
 }
 
 @end

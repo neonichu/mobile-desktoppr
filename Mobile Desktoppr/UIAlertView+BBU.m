@@ -20,4 +20,14 @@
     return alertView;
 }
 
++(instancetype)bbu_showInfoWithMessage:(NSString*)message {
+    UIAlertView* alertView = [[[self class] alloc] initWithTitle:NSLocalizedString(@"Information", nil)
+                                                         message:message
+                                                        delegate:nil
+                                               cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                               otherButtonTitles:nil];
+    [alertView show];
+    return alertView;
+}
+
 @end

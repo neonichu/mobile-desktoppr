@@ -25,9 +25,15 @@
 @implementation DesktopprPhotoSource
 
 - (id)init {
+    self = [self initWithUser:nil];
+    return self;
+}
+
+- (id)initWithUser:(DesktopprUser*)user {
     self = [super init];
     if (self) {
-        self.username = @"keithpitt";
+        // FIXME: Do not hardcode startup user
+        self.username = user ? user.username : @"neonacho";
         
         self.webService = [DesktopprWebService new];
         [self.webService wallpapersForUser:self.username

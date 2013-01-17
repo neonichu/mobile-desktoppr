@@ -8,6 +8,10 @@
 
 #import "FGalleryViewController.h"
 
+@class DesktopprUser;
+
 @interface BBUGalleryViewController : FGalleryViewController
+
+-(id)initWithUser:(DesktopprUser*)user;
 
 @end

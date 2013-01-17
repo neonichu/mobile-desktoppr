@@ -38,8 +38,18 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 
 @implementation BBUGalleryViewController
 
+- (void)backTapped {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)enableSeeAll:(BOOL)enabled {
     self.navigationItem.rightBarButtonItem.enabled = enabled;
+}
+
+- (void)initialize {
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                          target:self
+                                                                                          action:@selector(saveTapped)];
 }
 
 - (id)init {
@@ -68,9 +78,30 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
                                                                                  style:UIBarButtonItemStyleBordered
                                                                                 target:nil
                                                                                 action:NULL];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                                              target:self
-                                                                                              action:@selector(saveTapped)];
+        
+        [self initialize];
+    }
+    return self;
+}
+
+-(id)initWithUser:(DesktopprUser*)user {
+    DesktopprPhotoSource* photoSource = [[DesktopprPhotoSource alloc] initWithUser:user];
+    
+    NSArray* barItems = @[
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                      target:self action:@selector(backTapped)],
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:NULL],
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:NULL],
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:NULL],
+    ];
+    
+    self = [super initWithPhotoSource:photoSource barItems:barItems];
+    if (self) {
+        self.desktopprPhotoSource = photoSource;
+        
+        self.toolbarItems = nil;
+        
+        [self initialize];
     }
     return self;
 }
