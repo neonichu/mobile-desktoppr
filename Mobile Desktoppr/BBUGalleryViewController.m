@@ -80,6 +80,8 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
     for (UIBarButtonItem* barItem in barItems) {
         barItem.enabled = NO;
     }
+#else
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 #endif
     
     self = [super initWithPhotoSource:photoSource barItems:barItems];
