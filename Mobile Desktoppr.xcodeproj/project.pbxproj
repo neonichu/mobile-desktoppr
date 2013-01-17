@@ -44,6 +44,8 @@
 		86885FE916A883C300B454F8 /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86885FE316A883C300B454F8 /* list@2x.png */; };
 		86885FEA16A883C300B454F8 /* earthquake@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86885FE416A883C300B454F8 /* earthquake@2x.png */; };
 		86885FED16A8861D00B454F8 /* UIAlertView+BBU.m in Sources */ = {isa = PBXBuildFile; fileRef = 86885FEC16A8861C00B454F8 /* UIAlertView+BBU.m */; };
+		8688600216A88A5500B454F8 /* BBUUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8688600116A88A5500B454F8 /* BBUUserListViewController.m */; };
+		8688600616A88CC300B454F8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8688600516A88CC300B454F8 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +109,10 @@
 		86885FE416A883C300B454F8 /* earthquake@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "earthquake@2x.png"; sourceTree = "<group>"; };
 		86885FEB16A8861C00B454F8 /* UIAlertView+BBU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+BBU.h"; sourceTree = "<group>"; };
 		86885FEC16A8861C00B454F8 /* UIAlertView+BBU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+BBU.m"; sourceTree = "<group>"; };
+		8688600016A88A5500B454F8 /* BBUUserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUUserListViewController.h; sourceTree = "<group>"; };
+		8688600116A88A5500B454F8 /* BBUUserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUUserListViewController.m; sourceTree = "<group>"; };
+		8688600416A88CC300B454F8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = vendor/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		8688600516A88CC300B454F8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = vendor/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,8 @@
 				69E4BF0616A41B81004F8E3D /* BBUAppDelegate.m */,
 				86885FD716A7791300B454F8 /* BBUGalleryViewController.h */,
 				86885FD816A7791300B454F8 /* BBUGalleryViewController.m */,
+				8688600016A88A5500B454F8 /* BBUUserListViewController.h */,
+				8688600116A88A5500B454F8 /* BBUUserListViewController.m */,
 				69E4BF2C16A41D94004F8E3D /* DesktopprPhotoSource.h */,
 				69E4BF2D16A41D94004F8E3D /* DesktopprPhotoSource.m */,
 				69E4BF5316A42248004F8E3D /* DesktopprPicture.h */,
@@ -214,6 +222,7 @@
 			children = (
 				69E4BF2F16A41EF7004F8E3D /* AFNetworking */,
 				69E4BF2016A41CAE004F8E3D /* FGallery */,
+				8688600316A88CB000B454F8 /* MBProgressHUD */,
 			);
 			name = "Third Party";
 			sourceTree = "<group>";
@@ -255,6 +264,15 @@
 				69E4BF4216A41F08004F8E3D /* UIImageView+AFNetworking.m */,
 			);
 			name = AFNetworking;
+			sourceTree = "<group>";
+		};
+		8688600316A88CB000B454F8 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8688600416A88CC300B454F8 /* MBProgressHUD.h */,
+				8688600516A88CC300B454F8 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +386,8 @@
 				69C40A5516A4598200E05322 /* DesktopprUser.m in Sources */,
 				86885FD916A7791300B454F8 /* BBUGalleryViewController.m in Sources */,
 				86885FED16A8861D00B454F8 /* UIAlertView+BBU.m in Sources */,
+				8688600216A88A5500B454F8 /* BBUUserListViewController.m in Sources */,
+				8688600616A88CC300B454F8 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 - [X] Show a progress indicator during initial download
 - [ ] Save to camera roll
 - [ ] Allow login for upload (not in the API, yet)
-- [ ] Allow browsing users, random, etc.
+- [X] Allow browsing users, random, etc.
 - [ ] About with licensing information for submodules
 - [ ] Come up with a proper name
 - [ ] App icon, launch images
