@@ -15,6 +15,8 @@
 #import "MBProgressHUD.h"
 #import "UIAlertView+BBU.h"
 
+static NSString* const kUsedBefore = @"org.vu0.usedBefore";
+
 @interface FGalleryViewController ()
 
 - (void)arrangeThumbs;
@@ -154,6 +156,14 @@
     ALAssetsGroup* group = (__bridge ALAssetsGroup *)(contextInfo);
     if (group.editable) {
         // TODO: Finish code for writing to custom assets group
+    }
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kUsedBefore]) {
+        [UIAlertView bbu_showInfoWithMessage:NSLocalizedString(@"The image was saved to your photo library, you can set it "
+                                                               "as wallpaper from there.", nil)];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUsedBefore];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
