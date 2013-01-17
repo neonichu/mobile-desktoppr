@@ -3,7 +3,7 @@
 - [ ] Mock service
 - [ ] Use Grenobj for creating the model classes
 - [ ] Custom styling 
-- [ ] FGallery: "See all" doesn't set navigation title correctly.
+- [X] FGallery: "See all" does not set navigation title correctly.
 - [ ] FGallery: "See all" scrollView contentSize is too big
 - [ ] Show a progress indicator during initial download
 - [ ] Save to camera roll

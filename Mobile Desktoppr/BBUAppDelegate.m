@@ -7,13 +7,11 @@
 //
 
 #import "BBUAppDelegate.h"
-#import "DesktopprPhotoSource.h"
-#import "FGalleryViewController.h"
+#import "BBUGalleryViewController.h"
 
 @interface BBUAppDelegate ()
 
-@property (strong) FGalleryViewController* galleryVC;
-@property (strong) DesktopprPhotoSource* photoSource;
+@property (strong) BBUGalleryViewController* galleryVC;
 
 @end
 
@@ -23,8 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.photoSource = [[DesktopprPhotoSource alloc] init];
-    self.galleryVC = [[FGalleryViewController alloc] initWithPhotoSource:self.photoSource];
+    self.galleryVC = [[BBUGalleryViewController alloc] init];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];

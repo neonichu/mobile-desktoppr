@@ -34,6 +34,7 @@
 		69E4BF5016A42072004F8E3D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E4BF4F16A42072004F8E3D /* MobileCoreServices.framework */; };
 		69E4BF5216A42079004F8E3D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E4BF5116A42079004F8E3D /* SystemConfiguration.framework */; };
 		69E4BF5516A42249004F8E3D /* DesktopprPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E4BF5416A42248004F8E3D /* DesktopprPicture.m */; };
+		86885FD916A7791300B454F8 /* BBUGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86885FD816A7791300B454F8 /* BBUGalleryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,8 @@
 		69E4BF5116A42079004F8E3D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		69E4BF5316A42248004F8E3D /* DesktopprPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesktopprPicture.h; sourceTree = "<group>"; };
 		69E4BF5416A42248004F8E3D /* DesktopprPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopprPicture.m; sourceTree = "<group>"; };
+		86885FD716A7791300B454F8 /* BBUGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUGalleryViewController.h; sourceTree = "<group>"; };
+		86885FD816A7791300B454F8 /* BBUGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUGalleryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,8 @@
 			children = (
 				69E4BF0516A41B81004F8E3D /* BBUAppDelegate.h */,
 				69E4BF0616A41B81004F8E3D /* BBUAppDelegate.m */,
+				86885FD716A7791300B454F8 /* BBUGalleryViewController.h */,
+				86885FD816A7791300B454F8 /* BBUGalleryViewController.m */,
 				69E4BF2C16A41D94004F8E3D /* DesktopprPhotoSource.h */,
 				69E4BF2D16A41D94004F8E3D /* DesktopprPhotoSource.m */,
 				69E4BF5316A42248004F8E3D /* DesktopprPicture.h */,
@@ -306,6 +311,7 @@
 				69E4BF4E16A41F2D004F8E3D /* DesktopprWebService.m in Sources */,
 				69E4BF5516A42249004F8E3D /* DesktopprPicture.m in Sources */,
 				69C40A5516A4598200E05322 /* DesktopprUser.m in Sources */,
+				86885FD916A7791300B454F8 /* BBUGalleryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
