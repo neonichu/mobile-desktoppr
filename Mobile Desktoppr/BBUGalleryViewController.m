@@ -15,6 +15,8 @@
 #import "MBProgressHUD.h"
 #import "UIAlertView+BBU.h"
 
+#define SCREENSHOT_MODE     0
+
 static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 
 @interface FGalleryViewController ()
@@ -70,6 +72,16 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
     ];
     [barItems[2] setEnabled:NO];
     
+#if SCREENSHOT_MODE
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+    photoSource = nil;
+    
+    for (UIBarButtonItem* barItem in barItems) {
+        barItem.enabled = NO;
+    }
+#endif
+    
     self = [super initWithPhotoSource:photoSource barItems:barItems];
     if (self) {
         self.desktopprPhotoSource = photoSource;
@@ -81,6 +93,12 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
         
         [self initialize];
     }
+    
+#if SCREENSHOT_MODE
+    self.navigationItem.leftBarButtonItem.enabled = NO;
+    self.useThumbnailView = NO;
+#endif
+    
     return self;
 }
 
