@@ -12,4 +12,7 @@
 
 @property (strong) NSString* username;
 
+-(void)showRandomPicture;
+-(void)userListWithCompletionHandler:(void(^)(NSArray* objects, NSError* error))block;
+
 @end

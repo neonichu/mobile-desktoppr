@@ -10,6 +10,7 @@
 #import "DesktopprPicture.h"
 #import "DesktopprUser.h"
 #import "DesktopprWebService.h"
+#import "UIAlertView+BBU.h"
 
 @interface DesktopprPhotoSource ()
 
@@ -60,6 +61,23 @@
                           }];
     }
     return self;
+}
+
+- (void)showRandomPicture {
+    [self.webService randomWallpaperWithCompletionHandler:^(DesktopprPicture *picture, NSError *error) {
+        if (picture) {
+            self.pictures = @[ picture ];
+            [self.gallery reloadGallery];
+            // TODO: User as navigation title
+            // TODO: Tap navigation title to jump to user
+        } else {
+            [UIAlertView bbu_showAlertWithError:error];
+        }
+    }];
+}
+
+- (void)userListWithCompletionHandler:(DesktopprArrayBlock)block {
+    [self.webService listOfUsersWithCompletionHandler:block];
 }
 
 #pragma mark - FGalleryViewController delegate methods
