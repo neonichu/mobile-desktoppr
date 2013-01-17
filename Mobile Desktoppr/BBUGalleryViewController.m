@@ -16,6 +16,7 @@
 
 @interface FGalleryViewController ()
 
+- (void)arrangeThumbs;
 - (void)showThumbnailViewWithAnimation:(BOOL)animation;
 - (void)hideThumbnailViewWithAnimation:(BOOL)animation;
 
@@ -175,7 +176,13 @@
     [super viewWillDisappear:animated];
 }
 
-#pragma mark - Overriden from superclass to fix navigation title
+#pragma mark - Overriden from superclass to fix navigation title and content size
+
+- (void)arrangeThumbs {
+    [super arrangeThumbs];
+    
+    _thumbsView.contentSize = CGSizeMake(_thumbsView.contentSize.width, _thumbsView.contentSize.height - 75.0);
+}
 
 - (void)showThumbnailViewWithAnimation:(BOOL)animation {
     self.thumbnailNavigationTitle = self.navigationItem.title;
