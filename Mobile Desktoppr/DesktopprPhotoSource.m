@@ -26,9 +26,10 @@
 - (id)init {
     self = [super init];
     if (self) {
+        self.username = @"keithpitt";
+        
         self.webService = [DesktopprWebService new];
-        [self.webService wallpapersForUser:@"keithpitt"
-                                     count:20
+        [self.webService wallpapersForUser:self.username
                                      count:40
                      withCompletionHandler:^(NSArray *pictures, NSError *error) {
                          if (pictures) {
@@ -41,7 +42,7 @@
                      }];
 
         // For testing
-        [self.webService infoForUser:@"keithpitt" withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+        [self.webService infoForUser:self.username withCompletionHandler:^(DesktopprUser *user, NSError *error) {
             if (user) {
                 NSLog(@"User: %@", user.username);
             } else {
@@ -49,7 +50,7 @@
             }
         }];
 
-        [self.webService randomWallpaperForUser:@"keithpitt"
+        [self.webService randomWallpaperForUser:self.username
                           withCompletionHandler:^(DesktopprPicture *picture, NSError *error) {
                               if (picture) {
                                   NSLog(@"Picture: %@", picture.fullsizeURL);

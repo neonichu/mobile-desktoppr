@@ -10,4 +10,6 @@
 
 @interface DesktopprPhotoSource : NSObject <FGalleryViewControllerDelegate>
 
+@property (strong) NSString* username;
+
 @end
