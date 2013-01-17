@@ -44,7 +44,9 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
     
     switch (indexPath.row) {
         case 0:
+            cell.textLabel.alpha = 0.5;
             cell.textLabel.text = NSLocalizedString(@"Login", nil);
+            cell.userInteractionEnabled = NO;
             break;
         case 1:
             cell.textLabel.text = NSLocalizedString(@"License information", nil);
