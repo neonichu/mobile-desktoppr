@@ -46,24 +46,6 @@
                              [UIAlertView bbu_showAlertWithError:error];
                          }
                      }];
-
-        // For testing
-        [self.webService infoForUser:self.username withCompletionHandler:^(DesktopprUser *user, NSError *error) {
-            if (user) {
-                NSLog(@"User: %@", user.username);
-            } else {
-                NSLog(@"Error: %@", error.localizedDescription);
-            }
-        }];
-
-        [self.webService randomWallpaperForUser:self.username
-                          withCompletionHandler:^(DesktopprPicture *picture, NSError *error) {
-                              if (picture) {
-                                  NSLog(@"Picture: %@", picture.fullsizeURL);
-                              } else {
-                                  NSLog(@"Error: %@", error.localizedDescription);
-                              }
-                          }];
     }
     return self;
 }
