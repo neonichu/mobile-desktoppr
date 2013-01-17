@@ -13,6 +13,11 @@
 -(id)initWithDictionary:(NSDictionary*)dictionary {
     self = [super init];
     if (self) {
+        NSString* avatarUrl = dictionary[@"avatar_url"];
+        if (avatarUrl) {
+            self.avatarUrl = [NSURL URLWithString:avatarUrl];
+        }
+        
         self.username = dictionary[@"username"];
     }
     return self;

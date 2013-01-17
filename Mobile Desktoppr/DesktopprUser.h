@@ -10,6 +10,7 @@
 
 @interface DesktopprUser : NSObject
 
+@property (strong) NSURL* avatarUrl;
 @property (strong) NSString* username;
 
 -(id)initWithDictionary:(NSDictionary*)dictionary;

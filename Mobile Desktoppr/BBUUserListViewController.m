@@ -9,6 +9,7 @@
 #import "BBUGalleryViewController.h"
 #import "BBUUserListViewController.h"
 #import "DesktopprUser.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString* const kCellIdentifier = @"UserCellIdentifier";
 
@@ -38,10 +39,15 @@ static NSString* const kCellIdentifier = @"UserCellIdentifier";
 #pragma mark - UITableViewDataSource methods
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+    __weak UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     DesktopprUser* user = self.users[indexPath.row];
-    // TODO: Show avatars
+    [cell.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:user.avatarUrl]
+                          placeholderImage:nil
+                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                       cell.imageView.image = image;
+                                       [cell setNeedsLayout];
+                                   } failure:NULL];
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.textLabel.text = user.username;
     
