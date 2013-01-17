@@ -1,6 +1,5 @@
 - [X] Implement ALL THE API calls from https://www.desktoppr.co/api
 - [X] Implement paging
-- [ ] Mock service
 - [ ] Use Grenobj for creating the model classes
 - [ ] Custom styling 
 - [X] FGallery: "See all" does not set navigation title correctly.
@@ -12,5 +11,5 @@
 - [ ] About with licensing information for submodules
 - [ ] Come up with a proper name
 - [ ] App icon, launch images
-- [ ] iPhone 5 support
+- [X] iPhone 5 support
 - [ ] App Store release

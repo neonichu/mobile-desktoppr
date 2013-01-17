@@ -23,7 +23,7 @@
 {
     application.applicationSupportsShakeToEdit = YES;
     
-    self.galleryVC = [[BBUGalleryViewController alloc] init];
+    self.galleryVC = [BBUGalleryViewController new];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];

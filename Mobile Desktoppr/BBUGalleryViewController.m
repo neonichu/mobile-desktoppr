@@ -86,7 +86,7 @@
     
     __block BOOL done = NO;
     
-    ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
+    ALAssetsLibrary* library = [ALAssetsLibrary new];
     [library enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:albumName]) {
             [self writeCurrentPictureToAssetGroup:group];
@@ -133,6 +133,7 @@
     if (!currentPicture) {
         return;
     }
+    // TODO: Make image fit device size and pixel-ratio to not waste space
 
     UIImageWriteToSavedPhotosAlbum(currentPicture,
                                    self,
