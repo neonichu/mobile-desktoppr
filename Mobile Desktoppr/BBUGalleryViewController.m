@@ -83,7 +83,7 @@
 
     // TODO: Finish code for writing to custom assets group
 #if 0
-    NSString* const albumName = NSLocalizedString(@"Desktoppr", nil);
+    NSString* const albumName = NSLocalizedString(@"Homescreenr", nil);
     
     __block BOOL done = NO;
     

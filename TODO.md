@@ -9,7 +9,7 @@
 - [ ] Allow login for upload (not in the API, yet)
 - [X] Allow browsing users, random, etc.
 - [X] About with licensing information for submodules
-- [ ] Come up with a proper name
+- [X] Come up with a proper name
 - [ ] App icon, launch images
 - [X] iPhone 5 support
 - [ ] App Store release
