@@ -5,7 +5,7 @@
 - [ ] Custom styling 
 - [X] FGallery: "See all" does not set navigation title correctly.
 - [ ] FGallery: "See all" scrollView contentSize is too big
-- [ ] Show a progress indicator during initial download
+- [X] Show a progress indicator during initial download
 - [ ] Save to camera roll
 - [ ] Allow login for upload (not in the API, yet)
 - [ ] Allow browsing users, random, etc.

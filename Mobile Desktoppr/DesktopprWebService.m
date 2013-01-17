@@ -36,6 +36,8 @@
     self = [super initWithBaseURL:[NSURL URLWithString:@"https://api.desktoppr.co/1"]];
     if (self) {
         NSAssert([self registerHTTPOperationClass:[AFJSONRequestOperation class]], @"Could not register");
+        
+        [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     }
     return self;
 }
