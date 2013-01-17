@@ -11,7 +11,7 @@
 @class DesktopprPicture;
 @class DesktopprUser;
 
-typedef void(^DesktopprArrayBlock)(NSArray* pictures, NSError* error);
+typedef void(^DesktopprArrayBlock)(NSArray* objects, NSError* error);
 typedef void(^DesktopprPictureBlock)(DesktopprPicture* picture, NSError* error);
 typedef void(^DesktopprUserBlock)(DesktopprUser* user, NSError* error);
 
@@ -20,6 +20,7 @@ typedef void(^DesktopprUserBlock)(DesktopprUser* user, NSError* error);
 @property (strong) NSString* apiToken;
 
 -(void)infoForUser:(NSString*)username withCompletionHandler:(DesktopprUserBlock)block;
+-(void)listOfUsersWithCompletionHandler:(DesktopprArrayBlock)block;
 -(void)randomWallpaperWithCompletionHandler:(DesktopprPictureBlock)block;
 -(void)randomWallpaperForUser:(NSString*)username withCompletionHandler:(DesktopprPictureBlock)block;
 -(void)wallpapersWithCompletionHandler:(DesktopprArrayBlock)block count:(NSInteger)count;

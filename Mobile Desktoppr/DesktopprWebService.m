@@ -43,6 +43,17 @@
     return self;
 }
 
+-(void)listOfUsersWithCompletionHandler:(DesktopprArrayBlock)block {
+    // FIXME: Hardcoded just one user here, because API lacks user listing.
+    [self infoForUser:@"keithpitt" withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+        if (user) {
+            block(@[ user ], nil);
+        } else {
+            block(nil, error);
+        }
+    }];
+}
+
 -(void)randomWallpaperAtPath:(NSString*)path withCompletionHandler:(DesktopprPictureBlock)block {
     [self getPath:path
        parameters:nil
