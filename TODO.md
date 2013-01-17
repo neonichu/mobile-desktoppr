@@ -10,6 +10,7 @@
 - [X] Allow browsing users, random, etc.
 - [X] About with licensing information for submodules
 - [X] Come up with a proper name
-- [ ] App icon, launch images
+- [ ] App icon
+- [X] Launch images
 - [X] iPhone 5 support
 - [ ] App Store release
