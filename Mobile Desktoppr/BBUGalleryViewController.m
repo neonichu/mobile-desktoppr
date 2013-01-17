@@ -6,10 +6,13 @@
 //  Copyright (c) 2013 Boris Bügling. All rights reserved.
 //
 
+#import <AssetsLibrary/AssetsLibrary.h>
+
 #import "BBUGalleryViewController.h"
 #import "BBUUserListViewController.h"
 #import "DesktopprPhotoSource.h"
 #import "MBProgressHUD.h"
+#import "UIAlertView+BBU.h"
 
 @interface FGalleryViewController ()
 
@@ -61,11 +64,9 @@
                                                                                  style:UIBarButtonItemStyleBordered
                                                                                 target:nil
                                                                                 action:NULL];
-        // TODO: No upload API exists yet.
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                              target:nil
-                                                                                              action:NULL];
-        self.navigationItem.leftBarButtonItem.enabled = NO;
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                              target:self
+                                                                                              action:@selector(saveTapped)];
     }
     return self;
 }
@@ -73,6 +74,39 @@
 - (void)randomTapped {
     [self enableSeeAll:NO];
     [self.desktopprPhotoSource showRandomPicture];
+}
+
+- (void)saveTapped {
+    [self writeCurrentPictureToAssetGroup:nil];
+
+    // TODO: Finish code for writing to custom assets group
+#if 0
+    NSString* const albumName = NSLocalizedString(@"Desktoppr", nil);
+    
+    __block BOOL done = NO;
+    
+    ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
+    [library enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:albumName]) {
+            [self writeCurrentPictureToAssetGroup:group];
+            
+            done = YES;
+            *stop = YES;
+        }
+    } failureBlock:^(NSError *error) {
+        [UIAlertView bbu_showAlertWithError:error];
+    }];
+    
+    if (done) {
+        return;
+    }
+    
+    [library addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *group) {
+        [self writeCurrentPictureToAssetGroup:group];
+    } failureBlock:^(NSError *error) {
+        [UIAlertView bbu_showAlertWithError:error];
+    }];
+#endif
 }
 
 - (void)settingsTapped {
@@ -89,6 +123,34 @@
         BBUUserListViewController* userList = [[BBUUserListViewController alloc] initWithUsers:objects];
         [self.navigationController pushViewController:userList animated:YES];
     }];
+}
+
+- (void)writeCurrentPictureToAssetGroup:(ALAssetsGroup*)group {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    UIImage* currentPicture = [self->_photoViews[self.currentIndex] imageView].image;
+    if (!currentPicture) {
+        return;
+    }
+
+    UIImageWriteToSavedPhotosAlbum(currentPicture,
+                                   self,
+                                   @selector(writingCompletedWithImage:error:contextInfo:),
+                                   (__bridge void *)(group));
+}
+
+- (void)writingCompletedWithImage:(UIImage*)image error:(NSError*)error contextInfo:(void*)contextInfo {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    if (error) {
+        [UIAlertView bbu_showAlertWithError:error];
+        return;
+    }
+    
+    ALAssetsGroup* group = (__bridge ALAssetsGroup *)(contextInfo);
+    if (group.editable) {
+        // TODO: Finish code for writing to custom assets group
+    }
 }
 
 #pragma mark - Shake to see random picture

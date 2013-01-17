@@ -6,7 +6,7 @@
 - [X] FGallery: "See all" does not set navigation title correctly.
 - [ ] FGallery: "See all" scrollView contentSize is too big
 - [X] Show a progress indicator during initial download
-- [ ] Save to camera roll
+- [X] Save to camera roll
 - [ ] Allow login for upload (not in the API, yet)
 - [X] Allow browsing users, random, etc.
 - [ ] About with licensing information for submodules

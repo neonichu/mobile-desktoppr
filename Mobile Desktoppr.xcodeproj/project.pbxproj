@@ -46,6 +46,7 @@
 		86885FED16A8861D00B454F8 /* UIAlertView+BBU.m in Sources */ = {isa = PBXBuildFile; fileRef = 86885FEC16A8861C00B454F8 /* UIAlertView+BBU.m */; };
 		8688600216A88A5500B454F8 /* BBUUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8688600116A88A5500B454F8 /* BBUUserListViewController.m */; };
 		8688600616A88CC300B454F8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8688600516A88CC300B454F8 /* MBProgressHUD.m */; };
+		8688600816A897B900B454F8 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8688600716A897B900B454F8 /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		8688600116A88A5500B454F8 /* BBUUserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUUserListViewController.m; sourceTree = "<group>"; };
 		8688600416A88CC300B454F8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = vendor/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		8688600516A88CC300B454F8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = vendor/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
+		8688600716A897B900B454F8 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8688600816A897B900B454F8 /* AssetsLibrary.framework in Frameworks */,
 				69E4BF5216A42079004F8E3D /* SystemConfiguration.framework in Frameworks */,
 				69E4BF5016A42072004F8E3D /* MobileCoreServices.framework in Frameworks */,
 				69E4BF2B16A41D14004F8E3D /* QuartzCore.framework in Frameworks */,
@@ -155,6 +158,7 @@
 		69E4BEF516A41B80004F8E3D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8688600716A897B900B454F8 /* AssetsLibrary.framework */,
 				69E4BEFA16A41B81004F8E3D /* CoreGraphics.framework */,
 				69E4BEF816A41B80004F8E3D /* Foundation.framework */,
 				69E4BF4F16A42072004F8E3D /* MobileCoreServices.framework */,
