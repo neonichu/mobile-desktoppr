@@ -35,6 +35,14 @@
 		69E4BF5216A42079004F8E3D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E4BF5116A42079004F8E3D /* SystemConfiguration.framework */; };
 		69E4BF5516A42249004F8E3D /* DesktopprPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E4BF5416A42248004F8E3D /* DesktopprPicture.m */; };
 		86885FD916A7791300B454F8 /* BBUGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86885FD816A7791300B454F8 /* BBUGalleryViewController.m */; };
+		86885FDC16A8818700B454F8 /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 86885FDB16A8818700B454F8 /* gears.png */; };
+		86885FDE16A8824800B454F8 /* gears@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86885FDD16A8824800B454F8 /* gears@2x.png */; };
+		86885FE516A883C300B454F8 /* earthquake.png in Resources */ = {isa = PBXBuildFile; fileRef = 86885FDF16A883C200B454F8 /* earthquake.png */; };
+		86885FE616A883C300B454F8 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 86885FE016A883C200B454F8 /* list.png */; };
+		86885FE716A883C300B454F8 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 86885FE116A883C200B454F8 /* user.png */; };
+		86885FE816A883C300B454F8 /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86885FE216A883C300B454F8 /* user@2x.png */; };
+		86885FE916A883C300B454F8 /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86885FE316A883C300B454F8 /* list@2x.png */; };
+		86885FEA16A883C300B454F8 /* earthquake@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86885FE416A883C300B454F8 /* earthquake@2x.png */; };
 		86885FED16A8861D00B454F8 /* UIAlertView+BBU.m in Sources */ = {isa = PBXBuildFile; fileRef = 86885FEC16A8861C00B454F8 /* UIAlertView+BBU.m */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +97,14 @@
 		69E4BF5416A42248004F8E3D /* DesktopprPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopprPicture.m; sourceTree = "<group>"; };
 		86885FD716A7791300B454F8 /* BBUGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUGalleryViewController.h; sourceTree = "<group>"; };
 		86885FD816A7791300B454F8 /* BBUGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUGalleryViewController.m; sourceTree = "<group>"; };
+		86885FDB16A8818700B454F8 /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = "<group>"; };
+		86885FDD16A8824800B454F8 /* gears@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gears@2x.png"; sourceTree = "<group>"; };
+		86885FDF16A883C200B454F8 /* earthquake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earthquake.png; sourceTree = "<group>"; };
+		86885FE016A883C200B454F8 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
+		86885FE116A883C200B454F8 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		86885FE216A883C300B454F8 /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
+		86885FE316A883C300B454F8 /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
+		86885FE416A883C300B454F8 /* earthquake@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "earthquake@2x.png"; sourceTree = "<group>"; };
 		86885FEB16A8861C00B454F8 /* UIAlertView+BBU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+BBU.h"; sourceTree = "<group>"; };
 		86885FEC16A8861C00B454F8 /* UIAlertView+BBU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+BBU.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +197,14 @@
 				69E4BF0816A41B81004F8E3D /* Default.png */,
 				69E4BF0A16A41B81004F8E3D /* Default@2x.png */,
 				69E4BF0C16A41B81004F8E3D /* Default-568h@2x.png */,
+				86885FDF16A883C200B454F8 /* earthquake.png */,
+				86885FE416A883C300B454F8 /* earthquake@2x.png */,
+				86885FDB16A8818700B454F8 /* gears.png */,
+				86885FDD16A8824800B454F8 /* gears@2x.png */,
+				86885FE016A883C200B454F8 /* list.png */,
+				86885FE316A883C300B454F8 /* list@2x.png */,
+				86885FE116A883C200B454F8 /* user.png */,
+				86885FE216A883C300B454F8 /* user@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -288,6 +312,14 @@
 				69E4BF0916A41B81004F8E3D /* Default.png in Resources */,
 				69E4BF0B16A41B81004F8E3D /* Default@2x.png in Resources */,
 				69E4BF0D16A41B81004F8E3D /* Default-568h@2x.png in Resources */,
+				86885FDC16A8818700B454F8 /* gears.png in Resources */,
+				86885FDE16A8824800B454F8 /* gears@2x.png in Resources */,
+				86885FE516A883C300B454F8 /* earthquake.png in Resources */,
+				86885FE616A883C300B454F8 /* list.png in Resources */,
+				86885FE716A883C300B454F8 /* user.png in Resources */,
+				86885FE816A883C300B454F8 /* user@2x.png in Resources */,
+				86885FE916A883C300B454F8 /* list@2x.png in Resources */,
+				86885FEA16A883C300B454F8 /* earthquake@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
