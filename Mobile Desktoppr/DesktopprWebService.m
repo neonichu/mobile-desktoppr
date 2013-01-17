@@ -19,6 +19,7 @@
     if (self.apiToken) {
         path = [path stringByAppendingFormat:@"?auth_token=%@", self.apiToken];
     }
+    
     [super getPath:path
         parameters:parameters
            success:^(AFHTTPRequestOperation *operation, id responseObject) {
