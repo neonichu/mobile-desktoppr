@@ -47,6 +47,9 @@
 		8688600216A88A5500B454F8 /* BBUUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8688600116A88A5500B454F8 /* BBUUserListViewController.m */; };
 		8688600616A88CC300B454F8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8688600516A88CC300B454F8 /* MBProgressHUD.m */; };
 		8688600816A897B900B454F8 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8688600716A897B900B454F8 /* AssetsLibrary.framework */; };
+		8688600B16A89D1D00B454F8 /* BBUSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8688600A16A89D1D00B454F8 /* BBUSettingsViewController.m */; };
+		8688600D16A8A0C200B454F8 /* licenses.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8688600C16A8A0C200B454F8 /* licenses.txt */; };
+		8688601016A8A11800B454F8 /* BBUTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8688600F16A8A11800B454F8 /* BBUTextViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +118,11 @@
 		8688600416A88CC300B454F8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = vendor/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		8688600516A88CC300B454F8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = vendor/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		8688600716A897B900B454F8 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		8688600916A89D1D00B454F8 /* BBUSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUSettingsViewController.h; sourceTree = "<group>"; };
+		8688600A16A89D1D00B454F8 /* BBUSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUSettingsViewController.m; sourceTree = "<group>"; };
+		8688600C16A8A0C200B454F8 /* licenses.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = licenses.txt; sourceTree = "<group>"; };
+		8688600E16A8A11800B454F8 /* BBUTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUTextViewController.h; sourceTree = "<group>"; };
+		8688600F16A8A11800B454F8 /* BBUTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUTextViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +184,10 @@
 				69E4BF0616A41B81004F8E3D /* BBUAppDelegate.m */,
 				86885FD716A7791300B454F8 /* BBUGalleryViewController.h */,
 				86885FD816A7791300B454F8 /* BBUGalleryViewController.m */,
+				8688600916A89D1D00B454F8 /* BBUSettingsViewController.h */,
+				8688600A16A89D1D00B454F8 /* BBUSettingsViewController.m */,
+				8688600E16A8A11800B454F8 /* BBUTextViewController.h */,
+				8688600F16A8A11800B454F8 /* BBUTextViewController.m */,
 				8688600016A88A5500B454F8 /* BBUUserListViewController.h */,
 				8688600116A88A5500B454F8 /* BBUUserListViewController.m */,
 				69E4BF2C16A41D94004F8E3D /* DesktopprPhotoSource.h */,
@@ -213,6 +225,7 @@
 				86885FE416A883C300B454F8 /* earthquake@2x.png */,
 				86885FDB16A8818700B454F8 /* gears.png */,
 				86885FDD16A8824800B454F8 /* gears@2x.png */,
+				8688600C16A8A0C200B454F8 /* licenses.txt */,
 				86885FE016A883C200B454F8 /* list.png */,
 				86885FE316A883C300B454F8 /* list@2x.png */,
 				86885FE116A883C200B454F8 /* user.png */,
@@ -343,6 +356,7 @@
 				86885FE816A883C300B454F8 /* user@2x.png in Resources */,
 				86885FE916A883C300B454F8 /* list@2x.png in Resources */,
 				86885FEA16A883C300B454F8 /* earthquake@2x.png in Resources */,
+				8688600D16A8A0C200B454F8 /* licenses.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +406,8 @@
 				86885FED16A8861D00B454F8 /* UIAlertView+BBU.m in Sources */,
 				8688600216A88A5500B454F8 /* BBUUserListViewController.m in Sources */,
 				8688600616A88CC300B454F8 /* MBProgressHUD.m in Sources */,
+				8688600B16A89D1D00B454F8 /* BBUSettingsViewController.m in Sources */,
+				8688601016A8A11800B454F8 /* BBUTextViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

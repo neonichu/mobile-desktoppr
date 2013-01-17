@@ -9,6 +9,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 #import "BBUGalleryViewController.h"
+#import "BBUSettingsViewController.h"
 #import "BBUUserListViewController.h"
 #import "DesktopprPhotoSource.h"
 #import "MBProgressHUD.h"
@@ -111,7 +112,8 @@
 }
 
 - (void)settingsTapped {
-    // TODO: Show settings
+    BBUSettingsViewController* settings = [BBUSettingsViewController new];
+    [self.navigationController pushViewController:settings animated:YES];
 }
 
 - (void)userTapped {
