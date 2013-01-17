@@ -230,6 +230,7 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 
 - (void)showThumbnailViewWithAnimation:(BOOL)animation {
     self.thumbnailNavigationTitle = self.navigationItem.title;
+    self.navigationItem.leftBarButtonItem.enabled = NO;
     self.navigationItem.title = [NSLocalizedString(@"Pictures by ", nil)
                                  stringByAppendingString:self.desktopprPhotoSource.username];
     
@@ -237,6 +238,7 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 }
 
 - (void)hideThumbnailViewWithAnimation:(BOOL)animation {
+    self.navigationItem.leftBarButtonItem.enabled = YES;
     self.navigationItem.title = self.thumbnailNavigationTitle;
     
     [super hideThumbnailViewWithAnimation:animation];
