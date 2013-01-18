@@ -86,9 +86,9 @@
                   atIndex:(NSUInteger)index {
     switch (size) {
         case FGalleryPhotoSizeFullsize:
-            return [self.pictures[index] fullsizeURL];
+            return [self.pictures[index] fullsize_url].absoluteString;
         case FGalleryPhotoSizeThumbnail:
-            return [self.pictures[index] thumbnailURL];
+            return [self.pictures[index] thumbnail_url].absoluteString;
         default:
             break;
     }

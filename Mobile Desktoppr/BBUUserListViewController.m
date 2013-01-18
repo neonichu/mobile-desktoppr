@@ -42,7 +42,7 @@ static NSString* const kCellIdentifier = @"UserCellIdentifier";
     __weak UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     DesktopprUser* user = self.users[indexPath.row];
-    [cell.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:user.avatarUrl]
+    [cell.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:user.avatar_url]
                           placeholderImage:nil
                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                                        cell.imageView.image = image;

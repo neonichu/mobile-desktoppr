@@ -10,9 +10,22 @@
 
 @interface DesktopprPicture : NSObject
 
+@property (readonly) NSNumber* bytes;
+@property (readonly) NSDate* created_at;
+@property (readonly) NSNumber* height;
+@property (readonly) NSNumber* id;
+@property (readonly) NSString* review_state;
+@property (readonly) NSURL* url;
+@property (readonly) NSNumber* user_count;
+@property (readonly) NSNumber* user_id;
+@property (readonly) NSNumber* views_count;
+@property (readonly) NSNumber* width;
+
 @property (strong) NSString* caption;
-@property (strong) NSString* fullsizeURL;
-@property (strong) NSString* thumbnailURL;
+@property (strong) NSURL* fullsize_url;
+@property (strong) NSURL* thumbnail_url;
+
+@property (readonly) NSDictionary* externalRepresentation;
 
 -(id)initWithDictionary:(NSDictionary*)dictionary;
 
