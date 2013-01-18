@@ -20,9 +20,11 @@ typedef void(^DesktopprUserBlock)(DesktopprUser* user, NSError* error);
 @property (strong) NSString* apiToken;
 
 -(void)infoForUser:(NSString*)username withCompletionHandler:(DesktopprUserBlock)block;
+-(void)likeWallpaper:(DesktopprPicture*)wallpaper;
 -(void)listOfUsersWithCompletionHandler:(DesktopprArrayBlock)block;
 -(void)randomWallpaperWithCompletionHandler:(DesktopprPictureBlock)block;
 -(void)randomWallpaperForUser:(NSString*)username withCompletionHandler:(DesktopprPictureBlock)block;
+-(void)selectWallpaper:(DesktopprPicture*)wallpaper;
 -(void)wallpapersWithCompletionHandler:(DesktopprArrayBlock)block count:(NSInteger)count;
 -(void)wallpapersForUser:(NSString*)username count:(NSInteger)count withCompletionHandler:(DesktopprArrayBlock)block;
 -(void)whoamiWithCompletionHandler:(DesktopprUserBlock)block;

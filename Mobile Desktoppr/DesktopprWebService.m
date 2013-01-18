@@ -43,6 +43,10 @@
     return self;
 }
 
+-(void)likeWallpaper:(DesktopprPicture*)wallpaper {
+    [self performActionWithName:@"like" onWallpaper:wallpaper];
+}
+
 -(void)listOfUsersWithCompletionHandler:(DesktopprArrayBlock)block {
     // FIXME: Hardcoded just one user here, because API lacks user listing.
     [self infoForUser:@"keithpitt" withCompletionHandler:^(DesktopprUser *user, NSError *error) {
@@ -52,6 +56,13 @@
             block(nil, error);
         }
     }];
+}
+
+-(void)performActionWithName:(NSString*)name onWallpaper:(DesktopprPicture*)wallpaper {
+    [self getPath:[NSString stringWithFormat:@"user/wallpapers/%@/%@", wallpaper.id, name]
+       parameters:nil
+          success:NULL
+          failure:NULL];
 }
 
 -(void)randomWallpaperAtPath:(NSString*)path withCompletionHandler:(DesktopprPictureBlock)block {
@@ -76,6 +87,10 @@
 
 -(void)randomWallpaperWithCompletionHandler:(DesktopprPictureBlock)block {
     [self randomWallpaperAtPath:@"wallpapers/random" withCompletionHandler:block];
+}
+
+-(void)selectWallpaper:(DesktopprPicture*)wallpaper {
+    [self performActionWithName:@"selection" onWallpaper:wallpaper];
 }
 
 -(void)userInfoAtPath:(NSString*)path withCompletionHandler:(DesktopprUserBlock)block {
