@@ -10,3 +10,6 @@
 [submodule "vendor/MBProgressHUD"]
 	path = vendor/MBProgressHUD
 	url = https://github.com/jdg/MBProgressHUD.git
+[submodule "vendor/html-parser"]
+	path = vendor/html-parser
+	url = https://github.com/neonichu/html-parser.git
