@@ -8,14 +8,19 @@
 
 #import "DesktopprPhotoSource.h"
 #import "DesktopprPicture.h"
+#import "DesktopprScraper.h"
 #import "DesktopprUser.h"
 #import "DesktopprWebService.h"
 #import "UIAlertView+BBU.h"
+
+static NSString* const kDefaultUser = @"neonacho";
 
 @interface DesktopprPhotoSource ()
 
 @property (weak) FGalleryViewController* gallery;
 @property (strong) NSArray* pictures;
+@property (strong) DesktopprScraper* scraper;
+@property (strong) DesktopprUser* user;
 @property (strong) DesktopprWebService* webService;
 
 @end
@@ -23,6 +28,19 @@
 #pragma mark -
 
 @implementation DesktopprPhotoSource
+
+- (void)fetchWallpapers {
+    [self.webService wallpapersForUser:self.username
+                                 count:40
+                 withCompletionHandler:^(NSArray *pictures, NSError *error) {
+                     if (pictures) {
+                         self.pictures = pictures;
+                         [self.gallery reloadGallery];
+                     } else {
+                         [UIAlertView bbu_showAlertWithError:error];
+                     }
+                 }];
+}
 
 - (id)init {
     self = [self initWithUser:nil];
@@ -32,20 +50,21 @@
 - (id)initWithUser:(DesktopprUser*)user {
     self = [super init];
     if (self) {
-        // FIXME: Do not hardcode startup user
-        self.username = user ? user.username : @"neonacho";
-        
         self.webService = [DesktopprWebService new];
-        [self.webService wallpapersForUser:self.username
-                                     count:40
-                     withCompletionHandler:^(NSArray *pictures, NSError *error) {
-                         if (pictures) {
-                             self.pictures = pictures;
-                             [self.gallery reloadGallery];
-                         } else {
-                             [UIAlertView bbu_showAlertWithError:error];
-                         }
-                     }];
+        // TODO: Remove scraper when no longer necessary
+        self.scraper = [[DesktopprScraper alloc] initWithWebService:self.webService];
+        
+        if (user) {
+            self.user = user;
+            
+            [self fetchWallpapers];
+        } else {
+            [self.webService infoForUser:kDefaultUser withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+                self.user = user;
+                
+                [self fetchWallpapers];
+            }];
+        }
     }
     return self;
 }
@@ -64,7 +83,11 @@
 }
 
 - (void)userListWithCompletionHandler:(DesktopprArrayBlock)block {
-    [self.webService listOfUsersWithCompletionHandler:block];
+    [self.scraper followingUsersForUser:self.user withCompletionHandler:block];
+}
+
+- (NSString*)username {
+    return self.user.username;
 }
 
 #pragma mark - FGalleryViewController delegate methods

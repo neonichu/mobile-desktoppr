@@ -12,7 +12,7 @@
 
 @interface DesktopprPhotoSource : NSObject <FGalleryViewControllerDelegate>
 
-@property (strong) NSString* username;
+@property (readonly) NSString* username;
 
 -(id)initWithUser:(DesktopprUser*)user;
 -(void)showRandomPicture;

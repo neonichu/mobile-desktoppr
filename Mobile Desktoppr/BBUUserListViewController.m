@@ -26,7 +26,7 @@ static NSString* const kCellIdentifier = @"UserCellIdentifier";
 -(id)initWithUsers:(NSArray*)users {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        self.navigationItem.title = NSLocalizedString(@"Users", nil);
+        self.navigationItem.title = NSLocalizedString(@"Following", nil);
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
