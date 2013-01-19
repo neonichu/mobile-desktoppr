@@ -251,8 +251,7 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 - (void)showThumbnailViewWithAnimation:(BOOL)animation {
     self.thumbnailNavigationTitle = self.navigationItem.title;
     self.navigationItem.leftBarButtonItem.enabled = NO;
-    self.navigationItem.title = [NSLocalizedString(@"Pictures by ", nil)
-                                 stringByAppendingString:self.desktopprPhotoSource.username];
+    self.navigationItem.title = self.desktopprPhotoSource.username;
     
     [super showThumbnailViewWithAnimation:animation];
 }
