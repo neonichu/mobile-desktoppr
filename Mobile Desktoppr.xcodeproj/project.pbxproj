@@ -50,6 +50,7 @@
 		8688600B16A89D1D00B454F8 /* BBUSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8688600A16A89D1D00B454F8 /* BBUSettingsViewController.m */; };
 		8688600D16A8A0C200B454F8 /* licenses.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8688600C16A8A0C200B454F8 /* licenses.txt */; };
 		8688601016A8A11800B454F8 /* BBUTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8688600F16A8A11800B454F8 /* BBUTextViewController.m */; };
+		86E7597216AA08CC00F0257F /* DesktopprScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597116AA08CC00F0257F /* DesktopprScraper.m */; };
 		86E7597616AA235900F0257F /* BBUHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597516AA235900F0257F /* BBUHTMLParser.m */; };
 		86E7597916AA236700F0257F /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597816AA236700F0257F /* DTHTMLParser.m */; };
 		86E7597B16AA23FD00F0257F /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E7597A16AA23FD00F0257F /* libxml2.dylib */; };
@@ -126,6 +127,8 @@
 		8688600C16A8A0C200B454F8 /* licenses.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = licenses.txt; sourceTree = "<group>"; };
 		8688600E16A8A11800B454F8 /* BBUTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUTextViewController.h; sourceTree = "<group>"; };
 		8688600F16A8A11800B454F8 /* BBUTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUTextViewController.m; sourceTree = "<group>"; };
+		86E7597016AA08CC00F0257F /* DesktopprScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesktopprScraper.h; sourceTree = "<group>"; };
+		86E7597116AA08CC00F0257F /* DesktopprScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopprScraper.m; sourceTree = "<group>"; };
 		86E7597416AA235900F0257F /* BBUHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBUHTMLParser.h; path = "vendor/html-parser/BBUHTMLParser.h"; sourceTree = "<group>"; };
 		86E7597516AA235900F0257F /* BBUHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBUHTMLParser.m; path = "vendor/html-parser/BBUHTMLParser.m"; sourceTree = "<group>"; };
 		86E7597716AA236700F0257F /* DTHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTHTMLParser.h; path = "vendor/html-parser/vendor/DTHTMLParser/DTHTMLParser.h"; sourceTree = "<group>"; };
@@ -204,6 +207,8 @@
 				69E4BF2D16A41D94004F8E3D /* DesktopprPhotoSource.m */,
 				69E4BF5316A42248004F8E3D /* DesktopprPicture.h */,
 				69E4BF5416A42248004F8E3D /* DesktopprPicture.m */,
+				86E7597016AA08CC00F0257F /* DesktopprScraper.h */,
+				86E7597116AA08CC00F0257F /* DesktopprScraper.m */,
 				69C40A5316A4598200E05322 /* DesktopprUser.h */,
 				69C40A5416A4598200E05322 /* DesktopprUser.m */,
 				69E4BF4C16A41F2D004F8E3D /* DesktopprWebService.h */,
@@ -430,6 +435,7 @@
 				8688600616A88CC300B454F8 /* MBProgressHUD.m in Sources */,
 				8688600B16A89D1D00B454F8 /* BBUSettingsViewController.m in Sources */,
 				8688601016A8A11800B454F8 /* BBUTextViewController.m in Sources */,
+				86E7597216AA08CC00F0257F /* DesktopprScraper.m in Sources */,
 				86E7597616AA235900F0257F /* BBUHTMLParser.m in Sources */,
 				86E7597916AA236700F0257F /* DTHTMLParser.m in Sources */,
 			);
