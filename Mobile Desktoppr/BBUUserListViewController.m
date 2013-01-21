@@ -11,6 +11,8 @@
 #import "DesktopprUser.h"
 #import "UIImageView+AFNetworking.h"
 
+// TODO: Switch between following / followers
+
 static NSString* const kCellIdentifier = @"UserCellIdentifier";
 
 @interface BBUUserListViewController () <UITableViewDataSource, UITabBarDelegate>

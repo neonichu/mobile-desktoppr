@@ -13,4 +13,5 @@
 - [ ] App icon
 - [X] Launch images
 - [X] iPhone 5 support
+- [ ] iPad support
 - [ ] App Store release
