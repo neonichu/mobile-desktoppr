@@ -7,6 +7,7 @@
 //
 
 #import "DesktopprPicture.h"
+#import "ISO8601DateFormatter.h"
 
 @implementation DesktopprPicture
 
@@ -33,7 +34,7 @@
     self = [super init];
     if (self) {
 		_bytes = dictionary[@"bytes"];
-		_created_at = dictionary[@"created_at"];
+        _created_at = [[ISO8601DateFormatter new] dateFromString:dictionary[@"created_at"]];
 		_height = dictionary[@"height"];
 		_id = dictionary[@"id"];
 		_review_state = dictionary[@"review_state"];

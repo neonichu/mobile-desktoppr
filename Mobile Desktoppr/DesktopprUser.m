@@ -7,6 +7,7 @@
 //
 
 #import "DesktopprUser.h"
+#import "ISO8601DateFormatter.h"
 
 @implementation DesktopprUser
 
@@ -33,7 +34,7 @@
     if (self) {
 		NSString* avatar_url = dictionary[@"avatar_url"];
 		_avatar_url = avatar_url ? [NSURL URLWithString:avatar_url] : nil;
-		_created_at = dictionary[@"created_at"];
+        _created_at = [[ISO8601DateFormatter new] dateFromString:dictionary[@"created_at"]];
 		_followers_count = dictionary[@"followers_count"];
 		_following_count = dictionary[@"following_count"];
 		_lifetime_member = dictionary[@"lifetime_member"];
