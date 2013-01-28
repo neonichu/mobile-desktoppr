@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Boris Bügling. All rights reserved.
 //
 
+#import "AFNetworkActivityIndicatorManager.h"
 #import "BBUAppDelegate.h"
 #import "BBUGalleryViewController.h"
 #import "DropboxSDK.h"
@@ -34,6 +35,7 @@
     [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
     [[UIToolbar appearance] setTintColor:[UIColor lightGrayColor]];
     
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     DBSession* dbSession = [[DBSession alloc] initWithAppKey:@"2ylkrgxugq07kug"
                                                    appSecret:@"8vox0l7f0yi7jbj"
                                                         root:kDBRootDropbox];
