@@ -8,10 +8,12 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 
+#import "AFNetworkActivityIndicatorManager.h"
 #import "BBUGalleryViewController.h"
 #import "BBUSettingsViewController.h"
 #import "BBUUserListViewController.h"
 #import "DesktopprPhotoSource.h"
+#import "DropboxSDK.h"
 #import "MBProgressHUD.h"
 #import "UIAlertView+BBU.h"
 
@@ -29,9 +31,11 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 
 #pragma mark -
 
-@interface BBUGalleryViewController ()
+@interface BBUGalleryViewController () <DBRestClientDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (strong) UIBarButtonItem* addButton;
 @property (strong) DesktopprPhotoSource* desktopprPhotoSource;
+@property (nonatomic, strong) DBRestClient* dropboxClient;
 @property (strong) NSString* thumbnailNavigationTitle;
 
 @end
@@ -39,6 +43,16 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 #pragma mark -
 
 @implementation BBUGalleryViewController
+
+- (void)addTapped {
+    self.addButton.enabled = NO;
+    
+    if (![[DBSession sharedSession] isLinked]) {
+        [[DBSession sharedSession] linkFromController:self];
+    } else {
+        [self uploadPicture];
+    }
+}
 
 - (void)backTapped {
     [self.navigationController popViewControllerAnimated:YES];
@@ -58,6 +72,7 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
     DesktopprPhotoSource* photoSource = [DesktopprPhotoSource new];
     
     NSArray* barItems = @[
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addTapped)],
         [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"earthquake"] style:UIBarButtonItemStylePlain
                                         target:self action:@selector(randomTapped)],
         [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"user"] style:UIBarButtonItemStylePlain
@@ -70,7 +85,9 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:NULL],
         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:NULL],
     ];
-    [barItems[2] setEnabled:NO];
+    [barItems[3] setEnabled:NO];
+    
+    self.addButton = barItems[0];
     
 #if SCREENSHOT_MODE
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
@@ -169,6 +186,13 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
     [self.navigationController pushViewController:settings animated:YES];
 }
 
+- (void)uploadPicture {
+    UIImagePickerController* picker = [UIImagePickerController new];
+    picker.delegate = self;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentModalViewController:picker animated:YES];
+}
+
 - (void)userTapped {
     [self enableSeeAll:YES];
     
@@ -216,6 +240,58 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUsedBefore];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+}
+
+#pragma mark - UIImagePickerController delegate methods
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [self dismissModalViewControllerAnimated:YES];
+    
+    NSString* path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]
+                      stringByAppendingFormat:@"/%@.jpg", [[NSUUID UUID] UUIDString]];
+    UIImage* originalImage = info[UIImagePickerControllerOriginalImage];
+    [UIImageJPEGRepresentation(originalImage, 1.0) writeToFile:path atomically:YES];
+    
+    [self uploadFileAtPath:path withName:[path lastPathComponent]];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - Dropbox upload handling
+
+- (DBRestClient *)dropboxClient {
+    if (!_dropboxClient) {
+        _dropboxClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+        _dropboxClient.delegate = self;
+    }
+    
+    return _dropboxClient;
+}
+
+- (void)restClient:(DBRestClient *)client uploadedFile:(NSString *)destPath from:(NSString *)srcPath
+          metadata:(DBMetadata *)metadata {
+    [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+    
+    [[NSFileManager defaultManager] removeItemAtPath:srcPath error:nil];
+    [UIAlertView bbu_showInfoWithMessage:NSLocalizedString(@"Upload finished successfully.", nil)];
+    
+    self.addButton.enabled = YES;
+}
+
+- (void)restClient:(DBRestClient *)client uploadFileFailedWithError:(NSError *)error {
+    [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+    
+    [UIAlertView bbu_showAlertWithError:error];
+    
+    self.addButton.enabled = YES;
+}
+
+- (void)uploadFileAtPath:(NSString*)filePath withName:(NSString*)name {
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    [self.dropboxClient uploadFile:name toPath:@"/Apps/Desktoppr" withParentRev:nil fromPath:filePath];
 }
 
 #pragma mark - Shake to see random picture

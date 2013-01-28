@@ -45,4 +45,19 @@
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    if ([[DBSession sharedSession] handleOpenURL:url]) {
+        if ([[DBSession sharedSession] isLinked]) {
+            UIViewController* frontmostViewController = [[(UINavigationController*)self.window.rootViewController
+                                                          viewControllers] lastObject];
+            if (frontmostViewController == self.galleryVC) {
+                [self.galleryVC performSelector:@selector(uploadPicture) withObject:nil afterDelay:0.5];
+            }
+        }
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

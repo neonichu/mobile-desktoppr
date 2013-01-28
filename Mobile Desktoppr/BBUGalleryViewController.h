@@ -13,5 +13,6 @@
 @interface BBUGalleryViewController : FGalleryViewController
 
 -(id)initWithUser:(DesktopprUser*)user;
+-(void)uploadPicture;
 
 @end
