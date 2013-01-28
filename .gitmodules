@@ -13,3 +13,6 @@
 [submodule "vendor/html-parser"]
 	path = vendor/html-parser
 	url = https://github.com/neonichu/html-parser.git
+[submodule "vendor/dropbox"]
+	path = vendor/dropbox
+	url = https://github.com/dropbox-sdk-mirror/dropbox-sdk-ios.git
