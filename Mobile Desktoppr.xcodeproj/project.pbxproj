@@ -59,11 +59,44 @@
 		8689267B16B6B4AE00B0822A /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8689267316B6B4AE00B0822A /* Icon-Small@2x.png */; };
 		8689267C16B6B4AE00B0822A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8689267416B6B4AE00B0822A /* Icon.png */; };
 		8689267D16B6B4AE00B0822A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8689267516B6B4AE00B0822A /* Icon@2x.png */; };
+		868A4DCA16B70E5300A5F971 /* libSDropboxSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868A4DC516B70E1800A5F971 /* libSDropboxSDK.a */; };
+		868A4DCC16B70F0700A5F971 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868A4DCB16B70F0700A5F971 /* Security.framework */; };
 		86E7597216AA08CC00F0257F /* DesktopprScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597116AA08CC00F0257F /* DesktopprScraper.m */; };
 		86E7597616AA235900F0257F /* BBUHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597516AA235900F0257F /* BBUHTMLParser.m */; };
 		86E7597916AA236700F0257F /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597816AA236700F0257F /* DTHTMLParser.m */; };
 		86E7597B16AA23FD00F0257F /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E7597A16AA23FD00F0257F /* libxml2.dylib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		868A4DC216B70E1800A5F971 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 868A4DBC16B70E1800A5F971 /* DropboxSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D3196B831412FE180060E7C6;
+			remoteInfo = DropboxSDK;
+		};
+		868A4DC416B70E1800A5F971 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 868A4DBC16B70E1800A5F971 /* DropboxSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D3933BE5145F12AD00E15FA7;
+			remoteInfo = SDropboxSDK;
+		};
+		868A4DC616B70E1800A5F971 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 868A4DBC16B70E1800A5F971 /* DropboxSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D36931CC15088350003FBA23;
+			remoteInfo = DropboxOSX;
+		};
+		868A4DC816B70E4A00A5F971 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 868A4DBC16B70E1800A5F971 /* DropboxSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D3933BE4145F12AD00E15FA7;
+			remoteInfo = SDropboxSDK;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		69C40A5316A4598200E05322 /* DesktopprUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesktopprUser.h; sourceTree = "<group>"; };
@@ -146,6 +179,8 @@
 		8689267316B6B4AE00B0822A /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		8689267416B6B4AE00B0822A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		8689267516B6B4AE00B0822A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		868A4DBC16B70E1800A5F971 /* DropboxSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DropboxSDK.xcodeproj; path = vendor/dropbox/DropboxSDK/DropboxSDK.xcodeproj; sourceTree = "<group>"; };
+		868A4DCB16B70F0700A5F971 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		86E7597016AA08CC00F0257F /* DesktopprScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesktopprScraper.h; sourceTree = "<group>"; };
 		86E7597116AA08CC00F0257F /* DesktopprScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopprScraper.m; sourceTree = "<group>"; };
 		86E7597416AA235900F0257F /* BBUHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBUHTMLParser.h; path = "vendor/html-parser/BBUHTMLParser.h"; sourceTree = "<group>"; };
@@ -160,6 +195,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				868A4DCC16B70F0700A5F971 /* Security.framework in Frameworks */,
+				868A4DCA16B70E5300A5F971 /* libSDropboxSDK.a in Frameworks */,
 				86E7597B16AA23FD00F0257F /* libxml2.dylib in Frameworks */,
 				8688600816A897B900B454F8 /* AssetsLibrary.framework in Frameworks */,
 				69E4BF5216A42079004F8E3D /* SystemConfiguration.framework in Frameworks */,
@@ -203,6 +240,7 @@
 				86E7597A16AA23FD00F0257F /* libxml2.dylib */,
 				69E4BF4F16A42072004F8E3D /* MobileCoreServices.framework */,
 				69E4BF2A16A41D14004F8E3D /* QuartzCore.framework */,
+				868A4DCB16B70F0700A5F971 /* Security.framework */,
 				69E4BF5116A42079004F8E3D /* SystemConfiguration.framework */,
 				69E4BEF616A41B80004F8E3D /* UIKit.framework */,
 			);
@@ -280,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				69E4BF2F16A41EF7004F8E3D /* AFNetworking */,
+				868A4DBC16B70E1800A5F971 /* DropboxSDK.xcodeproj */,
 				69E4BF2016A41CAE004F8E3D /* FGallery */,
 				86E7597316AA234900F0257F /* html-parser */,
 				8689264E16B49D4700B0822A /* ISO8601DateFormatter */,
@@ -345,6 +384,16 @@
 			name = ISO8601DateFormatter;
 			sourceTree = "<group>";
 		};
+		868A4DBD16B70E1800A5F971 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				868A4DC316B70E1800A5F971 /* DropboxSDK.framework */,
+				868A4DC516B70E1800A5F971 /* libSDropboxSDK.a */,
+				868A4DC716B70E1800A5F971 /* DropboxOSX.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		86E7597316AA234900F0257F /* html-parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +420,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				868A4DC916B70E4A00A5F971 /* PBXTargetDependency */,
 			);
 			name = "Mobile Desktoppr";
 			productName = "Mobile Desktoppr";
@@ -397,12 +447,42 @@
 			mainGroup = 69E4BEE716A41B80004F8E3D;
 			productRefGroup = 69E4BEF316A41B80004F8E3D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 868A4DBD16B70E1800A5F971 /* Products */;
+					ProjectRef = 868A4DBC16B70E1800A5F971 /* DropboxSDK.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				69E4BEF116A41B80004F8E3D /* Mobile Desktoppr */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		868A4DC316B70E1800A5F971 /* DropboxSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DropboxSDK.framework;
+			remoteRef = 868A4DC216B70E1800A5F971 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		868A4DC516B70E1800A5F971 /* libSDropboxSDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSDropboxSDK.a;
+			remoteRef = 868A4DC416B70E1800A5F971 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		868A4DC716B70E1800A5F971 /* DropboxOSX.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DropboxOSX.framework;
+			remoteRef = 868A4DC616B70E1800A5F971 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		69E4BEF016A41B80004F8E3D /* Resources */ = {
@@ -489,6 +569,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		868A4DC916B70E4A00A5F971 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SDropboxSDK;
+			targetProxy = 868A4DC816B70E4A00A5F971 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		69E4BF0E16A41B81004F8E3D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -513,9 +601,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(SRCROOT)/vendor/dropbox/DropboxSDK/Classes/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -537,9 +629,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(SRCROOT)/vendor/dropbox/DropboxSDK/Classes/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -589,9 +685,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(SRCROOT)/vendor/dropbox/DropboxSDK/Classes/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

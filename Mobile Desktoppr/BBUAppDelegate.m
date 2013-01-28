@@ -8,6 +8,7 @@
 
 #import "BBUAppDelegate.h"
 #import "BBUGalleryViewController.h"
+#import "DropboxSDK.h"
 
 @interface BBUAppDelegate ()
 
@@ -32,6 +33,12 @@
     
     [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
     [[UIToolbar appearance] setTintColor:[UIColor lightGrayColor]];
+    
+    DBSession* dbSession = [[DBSession alloc] initWithAppKey:@"2ylkrgxugq07kug"
+                                                   appSecret:@"8vox0l7f0yi7jbj"
+                                                        root:kDBRootDropbox];
+    [DBSession setSharedSession:dbSession];
+    //[[DBSession sharedSession] unlinkAll];
     
     return YES;
 }
