@@ -61,6 +61,7 @@
 		8689267D16B6B4AE00B0822A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8689267516B6B4AE00B0822A /* Icon@2x.png */; };
 		868A4DCA16B70E5300A5F971 /* libSDropboxSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868A4DC516B70E1800A5F971 /* libSDropboxSDK.a */; };
 		868A4DCC16B70F0700A5F971 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868A4DCB16B70F0700A5F971 /* Security.framework */; };
+		86BD949B16F67EF50036575B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BD949A16F67EF50036575B /* Crashlytics.framework */; };
 		86E7597216AA08CC00F0257F /* DesktopprScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597116AA08CC00F0257F /* DesktopprScraper.m */; };
 		86E7597616AA235900F0257F /* BBUHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597516AA235900F0257F /* BBUHTMLParser.m */; };
 		86E7597916AA236700F0257F /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597816AA236700F0257F /* DTHTMLParser.m */; };
@@ -181,6 +182,7 @@
 		8689267516B6B4AE00B0822A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		868A4DBC16B70E1800A5F971 /* DropboxSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DropboxSDK.xcodeproj; path = vendor/dropbox/DropboxSDK/DropboxSDK.xcodeproj; sourceTree = "<group>"; };
 		868A4DCB16B70F0700A5F971 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		86BD949A16F67EF50036575B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		86E7597016AA08CC00F0257F /* DesktopprScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesktopprScraper.h; sourceTree = "<group>"; };
 		86E7597116AA08CC00F0257F /* DesktopprScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopprScraper.m; sourceTree = "<group>"; };
 		86E7597416AA235900F0257F /* BBUHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBUHTMLParser.h; path = "vendor/html-parser/BBUHTMLParser.h"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				69E4BEF716A41B80004F8E3D /* UIKit.framework in Frameworks */,
 				69E4BEF916A41B81004F8E3D /* Foundation.framework in Frameworks */,
 				69E4BEFB16A41B81004F8E3D /* CoreGraphics.framework in Frameworks */,
+				86BD949B16F67EF50036575B /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +239,7 @@
 			children = (
 				8688600716A897B900B454F8 /* AssetsLibrary.framework */,
 				69E4BEFA16A41B81004F8E3D /* CoreGraphics.framework */,
+				86BD949A16F67EF50036575B /* Crashlytics.framework */,
 				69E4BEF816A41B80004F8E3D /* Foundation.framework */,
 				86E7597A16AA23FD00F0257F /* libxml2.dylib */,
 				69E4BF4F16A42072004F8E3D /* MobileCoreServices.framework */,
@@ -416,6 +420,7 @@
 				69E4BEEF16A41B80004F8E3D /* Frameworks */,
 				69E4BEF016A41B80004F8E3D /* Resources */,
 				86885FEE16A886B300B454F8 /* Show FIXMEs and TODOs */,
+				86BD949716F67EC10036575B /* Setup Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -528,6 +533,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | \\\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | \\\ngrep -v '/vendor/' | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
+		};
+		86BD949716F67EC10036575B /* Setup Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Setup Crashlytics";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 1c9c54b5fda9486e3a5944612a03a7bcac5a4c92";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -645,6 +664,10 @@
 		69E4BF1116A41B81004F8E3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mobile Desktoppr/Mobile Desktoppr-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Desktoppr/Mobile Desktoppr-Info.plist";
@@ -657,6 +680,10 @@
 		69E4BF1216A41B81004F8E3D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mobile Desktoppr/Mobile Desktoppr-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Desktoppr/Mobile Desktoppr-Info.plist";
@@ -700,6 +727,10 @@
 		8688601716A8B1CC00B454F8 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mobile Desktoppr/Mobile Desktoppr-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Desktoppr/Mobile Desktoppr-Info.plist";
