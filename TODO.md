@@ -1,17 +1,17 @@
 - [X] Implement ALL THE API calls from https://www.desktoppr.co/api
 - [X] Implement paging
-- [ ] Use Grenobj for creating the model classes
-- [ ] Custom styling 
+- [X] Use Grenobj for creating the model classes
+- [X] Custom styling 
 - [X] FGallery: "See all" does not set navigation title correctly.
 - [X] FGallery: "See all" scrollView contentSize is too big
 - [X] Show a progress indicator during initial download
 - [X] Save to camera roll
-- [ ] Allow login for upload (not in the API, yet)
+- [X] Allow login for upload (not in the API, yet)
 - [X] Allow browsing users, random, etc.
 - [X] About with licensing information for submodules
 - [X] Come up with a proper name
-- [ ] App icon
+- [X] App icon
 - [X] Launch images
 - [X] iPhone 5 support
-- [ ] iPad support
+- [X] iPad support
 - [ ] App Store release
