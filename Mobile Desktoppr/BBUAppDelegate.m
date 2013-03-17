@@ -6,7 +6,10 @@
 //  Copyright (c) 2013 Boris Bügling. All rights reserved.
 //
 
+#import <Crashlytics/Crashlytics.h>
+
 #import "AFNetworkActivityIndicatorManager.h"
+#import "API_Keys.h"
 #import "BBUAppDelegate.h"
 #import "BBUGalleryViewController.h"
 #import "DropboxSDK.h"
@@ -23,6 +26,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Crashlytics startWithAPIKey:CRASHLYTICS_API_KEY];
+    
     application.applicationSupportsShakeToEdit = YES;
     
     self.galleryVC = [BBUGalleryViewController new];
@@ -36,8 +41,8 @@
     [[UIToolbar appearance] setTintColor:[UIColor lightGrayColor]];
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-    DBSession* dbSession = [[DBSession alloc] initWithAppKey:@"2ylkrgxugq07kug"
-                                                   appSecret:@"8vox0l7f0yi7jbj"
+    DBSession* dbSession = [[DBSession alloc] initWithAppKey:DROPBOX_APP_KEY
+                                                   appSecret:DROPBOX_APP_SECRET
                                                         root:kDBRootDropbox];
     [DBSession setSharedSession:dbSession];
     //[[DBSession sharedSession] unlinkAll];

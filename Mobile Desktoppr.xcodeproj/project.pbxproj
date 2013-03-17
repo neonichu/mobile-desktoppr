@@ -183,6 +183,7 @@
 		868A4DBC16B70E1800A5F971 /* DropboxSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DropboxSDK.xcodeproj; path = vendor/dropbox/DropboxSDK/DropboxSDK.xcodeproj; sourceTree = "<group>"; };
 		868A4DCB16B70F0700A5F971 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		86BD949A16F67EF50036575B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		86BD949C16F680AF0036575B /* API_Keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_Keys.h; sourceTree = "<group>"; };
 		86E7597016AA08CC00F0257F /* DesktopprScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesktopprScraper.h; sourceTree = "<group>"; };
 		86E7597116AA08CC00F0257F /* DesktopprScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopprScraper.m; sourceTree = "<group>"; };
 		86E7597416AA235900F0257F /* BBUHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBUHTMLParser.h; path = "vendor/html-parser/BBUHTMLParser.h"; sourceTree = "<group>"; };
@@ -254,6 +255,7 @@
 		69E4BEFC16A41B81004F8E3D /* Mobile Desktoppr */ = {
 			isa = PBXGroup;
 			children = (
+				86BD949C16F680AF0036575B /* API_Keys.h */,
 				69E4BF0516A41B81004F8E3D /* BBUAppDelegate.h */,
 				69E4BF0616A41B81004F8E3D /* BBUAppDelegate.m */,
 				86885FD716A7791300B454F8 /* BBUGalleryViewController.h */,
