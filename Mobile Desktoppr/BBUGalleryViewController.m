@@ -190,7 +190,7 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
     UIImagePickerController* picker = [UIImagePickerController new];
     picker.delegate = self;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:NULL];
 }
 
 - (void)userTapped {
@@ -245,7 +245,7 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 #pragma mark - UIImagePickerController delegate methods
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
     
     NSString* path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]
                       stringByAppendingFormat:@"/%@.jpg", [[NSUUID UUID] UUIDString]];
@@ -256,7 +256,7 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - Dropbox upload handling

@@ -605,7 +605,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(SRCROOT)/vendor/dropbox/DropboxSDK/Classes/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -633,7 +633,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(SRCROOT)/vendor/dropbox/DropboxSDK/Classes/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -648,7 +648,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mobile Desktoppr/Mobile Desktoppr-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Desktoppr/Mobile Desktoppr-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -661,7 +660,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mobile Desktoppr/Mobile Desktoppr-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Desktoppr/Mobile Desktoppr-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -689,7 +687,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(SRCROOT)/vendor/dropbox/DropboxSDK/Classes/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -705,7 +703,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mobile Desktoppr/Mobile Desktoppr-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Desktoppr/Mobile Desktoppr-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
