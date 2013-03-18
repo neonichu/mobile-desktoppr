@@ -182,7 +182,7 @@ static NSString* const kDesktopprServiceName = @"desktoppr.co";
                       [pictures addObject:[[DesktopprPicture alloc] initWithDictionary:pictDict]];
                   }
                   
-                  if (pictures.count >= count) {
+                  if (pictures.count >= count || pictures.count == 0) {
                       block(pictures, nil);
                   } else {
                       id next = responseObject[@"pagination"][@"next"];
