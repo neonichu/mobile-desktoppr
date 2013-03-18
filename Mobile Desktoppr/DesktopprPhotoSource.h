@@ -9,13 +9,16 @@
 #import "FGalleryViewController.h"
 
 @class DesktopprUser;
+@class DesktopprWebService;
 
 @interface DesktopprPhotoSource : NSObject <FGalleryViewControllerDelegate>
 
 @property (readonly) NSString* username;
 
 -(id)initWithUser:(DesktopprUser*)user;
+-(NSArray*)pictures;
 -(void)showRandomPicture;
 -(void)userListWithCompletionHandler:(void(^)(NSArray* objects, NSError* error))block;
+-(DesktopprWebService*)webService;
 
 @end

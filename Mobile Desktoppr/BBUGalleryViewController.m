@@ -6,22 +6,20 @@
 //  Copyright (c) 2013 Boris Bügling. All rights reserved.
 //
 
-#import <AssetsLibrary/AssetsLibrary.h>
-
 #import "AFNetworkActivityIndicatorManager.h"
 #import "BBUGalleryViewController.h"
+#import "BBULikePictureActivity.h"
+#import "BBUPhotoAlbumActivity.h"
 #import "BBUSettingsViewController.h"
+#import "BBUSyncPictureActivity.h"
 #import "BBUUserListViewController.h"
 #import "DesktopprPhotoSource.h"
 #import "DropboxSDK.h"
 #import "MBProgressHUD.h"
 #import "UIAlertView+BBU.h"
-#import "UIImage+Resize.h"
+#import "ZYActivity.h"
 
-#define ALBUM_NAME          NSLocalizedString(@"Homescreenr", nil)
 #define SCREENSHOT_MODE     0
-
-static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 
 @interface FGalleryViewController ()
 
@@ -36,7 +34,6 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 @interface BBUGalleryViewController () <DBRestClientDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong) UIBarButtonItem* addButton;
-@property (strong) ALAssetsLibrary* assetLibrary;
 @property (strong) DesktopprPhotoSource* desktopprPhotoSource;
 @property (nonatomic, strong) DBRestClient* dropboxClient;
 @property (strong) NSString* thumbnailNavigationTitle;
@@ -46,6 +43,26 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 #pragma mark -
 
 @implementation BBUGalleryViewController
+
+- (void)actionTapped {
+    if (self.currentIndex < 0) {
+        return;
+    }
+    
+    NSArray* activityItems = @[ [self->_photoViews[self.currentIndex] imageView].image,
+                                self.desktopprPhotoSource.pictures[self.currentIndex] ];
+    
+    NSArray* activities = @[ [[BBULikePictureActivity alloc] initWithWebService:self.desktopprPhotoSource.webService],
+                             [BBUPhotoAlbumActivity new],
+                             [[BBUSyncPictureActivity alloc] initWithWebService:self.desktopprPhotoSource.webService] ];
+    
+    UIActivityViewController* activitiesView = [[UIActivityViewController alloc] initWithActivityItems:activityItems
+                                                                                 applicationActivities:activities];
+    activitiesView.excludedActivityTypes = @[ UIActivityTypeAssignToContact, UIActivityTypeMail, UIActivityTypeMessage,
+                                              UIActivityTypePostToFacebook, UIActivityTypePostToTwitter,
+                                              UIActivityTypePostToWeibo, UIActivityTypeSaveToCameraRoll ];
+    [self presentViewController:activitiesView animated:YES completion:NULL];
+}
 
 - (void)addTapped {
     if (![[DBSession sharedSession] isLinked]) {
@@ -66,7 +83,7 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 - (void)initialize {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                                           target:self
-                                                                                          action:@selector(saveTapped)];
+                                                                                          action:@selector(actionTapped)];
 }
 
 - (id)init {
@@ -144,82 +161,9 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
     return self;
 }
 
-- (void)moveAssetToGroup:(ALAsset*)asset {
-    __block BOOL done = NO;
-    
-    [self.assetLibrary enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:ALBUM_NAME]) {
-            if (group.editable) {
-                [group addAsset:asset];
-            }
-            
-            done = YES;
-            *stop = YES;
-        }
-    } failureBlock:^(NSError *error) {
-        [UIAlertView bbu_showAlertWithError:error];
-    }];
-    
-    if (!done) {
-        [self.assetLibrary addAssetsGroupAlbumWithName:ALBUM_NAME resultBlock:^(ALAssetsGroup *group) {
-            if (group.editable) {
-                [group addAsset:asset];
-            }
-        } failureBlock:^(NSError *error) {
-            [UIAlertView bbu_showAlertWithError:error];
-        }];
-    }
-    
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:kUsedBefore]) {
-        [UIAlertView bbu_showInfoWithMessage:NSLocalizedString(@"The image was saved to your photo library, you can set it "
-                                                               "as wallpaper from there.", nil)];
-        
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUsedBefore];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    
-    self.assetLibrary = nil;
-}
-
-- (void)moveAssetWithURLToGroup:(NSURL*)assetURL {
-    [self.assetLibrary assetForURL:assetURL resultBlock:^(ALAsset *asset) {
-        [self moveAssetToGroup:asset];
-    } failureBlock:^(NSError *error) {
-        [UIAlertView bbu_showAlertWithError:error];
-    }];
-}
-
 - (void)randomTapped {
     [self enableSeeAll:NO];
     [self.desktopprPhotoSource showRandomPicture];
-}
-
-- (void)saveTapped {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    UIImage* currentPicture = [self->_photoViews[self.currentIndex] imageView].image;
-    if (!currentPicture) {
-        return;
-    }
-    
-    CGFloat neededWidth = [[UIScreen mainScreen] bounds].size.width * [UIScreen mainScreen].scale;
-    if (neededWidth < currentPicture.size.width) {
-        CGFloat neededHeight = currentPicture.size.height * (neededWidth / currentPicture.size.width);
-        currentPicture = [currentPicture bbu_scaledImageWithSize:CGSizeMake(neededWidth, neededHeight)];
-    }
-    
-    self.assetLibrary = [ALAssetsLibrary new];
-    [self.assetLibrary writeImageToSavedPhotosAlbum:currentPicture.CGImage metadata:nil
-                                    completionBlock:^(NSURL *assetURL, NSError *error) {
-                                        if (!assetURL) {
-                                            [UIAlertView bbu_showAlertWithError:error];
-                                            return;
-                                        }
-                                        
-                                        [self moveAssetWithURLToGroup:assetURL];
-                                    }];
 }
 
 - (void)settingsTapped {

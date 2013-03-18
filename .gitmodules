@@ -16,3 +16,6 @@
 [submodule "vendor/dropbox"]
 	path = vendor/dropbox
 	url = https://github.com/dropbox-sdk-mirror/dropbox-sdk-ios.git
+[submodule "vendor/ZYActivity"]
+	path = vendor/ZYActivity
+	url = https://github.com/marianoabdala/ZYActivity.git
