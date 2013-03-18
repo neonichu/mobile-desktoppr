@@ -54,6 +54,11 @@ static NSString* const kDefaultUser = @"neonacho";
         } else {
             if ([[DesktopprWebService sharedService] isLoggedIn]) {
                 [[DesktopprWebService sharedService] whoamiWithCompletionHandler:^(DesktopprUser *user, NSError *error) {
+                    if (!user) {
+                        [UIAlertView bbu_showAlertWithError:error];
+                        return;
+                    }
+                    
                     self.user = user;
                     
                     [self fetchWallpapers];
@@ -61,6 +66,11 @@ static NSString* const kDefaultUser = @"neonacho";
             } else {
                 [[DesktopprWebService sharedService] infoForUser:kDefaultUser
                                            withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+                                               if (!user) {
+                                                   [UIAlertView bbu_showAlertWithError:error];
+                                                   return;
+                                               }
+                                               
                                                self.user = user;
                                                
                                                [self fetchWallpapers];

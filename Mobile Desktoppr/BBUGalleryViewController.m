@@ -183,6 +183,11 @@
     [self.desktopprPhotoSource userListWithCompletionHandler:^(NSArray *objects, NSError *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
+        if (!objects) {
+            [UIAlertView bbu_showAlertWithError:error];
+            return;
+        }
+        
         BBUUserListViewController* userList = [[BBUUserListViewController alloc] initWithUsers:objects];
         [self.navigationController pushViewController:userList animated:YES];
     }];
