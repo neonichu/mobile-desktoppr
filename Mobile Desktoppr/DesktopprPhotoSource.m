@@ -48,9 +48,7 @@ static NSString* const kDefaultUser = @"neonacho";
     self = [super init];
     if (self) {
         if (user) {
-            self.user = user;
-            
-            [self fetchWallpapers];
+            [self switchToUser:user];
         } else {
             if ([[DesktopprWebService sharedService] isLoggedIn]) {
                 [[DesktopprWebService sharedService] whoamiWithCompletionHandler:^(DesktopprUser *user, NSError *error) {
@@ -59,9 +57,7 @@ static NSString* const kDefaultUser = @"neonacho";
                         return;
                     }
                     
-                    self.user = user;
-                    
-                    [self fetchWallpapers];
+                    [self switchToUser:user];
                 }];
             } else {
                 [[DesktopprWebService sharedService] infoForUser:kDefaultUser
@@ -71,14 +67,33 @@ static NSString* const kDefaultUser = @"neonacho";
                                                    return;
                                                }
                                                
-                                               self.user = user;
-                                               
-                                               [self fetchWallpapers];
+                                               [self switchToUser:user];
                                            }];
             }
         }
+        
+        [[DesktopprWebService sharedService] addObserver:self forKeyPath:@"apiToken" options:0 context:NULL];
     }
     return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    [self refresh];
+}
+
+- (void)refresh {
+    [[DesktopprWebService sharedService] whoamiWithCompletionHandler:^(DesktopprUser *user, NSError *error) {
+        if (user) {
+            [self switchToUser:user];
+        } else {
+            [[DesktopprWebService sharedService] infoForUser:kDefaultUser
+                                       withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+                                           if (user) {
+                                               [self switchToUser:user];
+                                           }
+                                       }];
+        }
+    }];
 }
 
 - (void)showRandomPicture {
@@ -92,6 +107,12 @@ static NSString* const kDefaultUser = @"neonacho";
             [UIAlertView bbu_showAlertWithError:error];
         }
     }];
+}
+
+- (void)switchToUser:(DesktopprUser *)user {
+    self.user = user;
+    
+    [self fetchWallpapers];
 }
 
 - (NSString*)username {

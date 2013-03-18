@@ -152,9 +152,14 @@ static NSString* const kDesktopprServiceName = @"desktoppr.co";
 }
 
 -(void)logout {
-    self.apiToken = nil;
+    NSHTTPCookieStorage* storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie* cookie in storage.cookies) {
+        [storage deleteCookie:cookie];
+    }
     
     [SSKeychain deletePasswordForService:kDesktopprServiceName account:kDesktopprServiceName];
+    
+    self.apiToken = nil;
 }
 
 -(void)performActionWithName:(NSString*)name onWallpaper:(DesktopprPicture*)wallpaper {

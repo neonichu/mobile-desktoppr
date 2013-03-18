@@ -17,6 +17,7 @@
 -(id)initWithUser:(DesktopprUser*)user;
 -(NSArray*)pictures;
 -(void)showRandomPicture;
+-(void)switchToUser:(DesktopprUser*)user;
 -(DesktopprUser*)user;
 
 @end
