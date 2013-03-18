@@ -16,7 +16,9 @@
 
 static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
 
-@interface BBUSettingsViewController () <UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface BBUSettingsViewController () <UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+
+@property (strong) UIAlertView* alertView;
 
 @end
 
@@ -44,6 +46,8 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
                                              [self.tableView reloadData];
                                          }];
     }
+    
+    self.alertView = nil;
 }
 
 -(id)init {
@@ -121,14 +125,17 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
                 return;
             }
             
-            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login to Desktoppr", nil)
-                                                                message:nil
-                                                               delegate:self
-                                                      cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                                      otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
-            alertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
-            alertView.delegate = self;
-            [alertView show];
+            self.alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login to Desktoppr", nil)
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                              otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+            self.alertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+            self.alertView.delegate = self;
+            [self.alertView show];
+            
+            [self.alertView textFieldAtIndex:0].delegate = self;
+            [self.alertView textFieldAtIndex:1].delegate = self;
             break;
         }
             
@@ -155,6 +162,22 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
             }
             break;
     }
+}
+
+#pragma mark - UITextField delegate methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (!self.alertView) {
+        return NO;
+    }
+    
+    if (textField == [self.alertView textFieldAtIndex:0]) {
+        [[self.alertView textFieldAtIndex:1] performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.1];
+    } else {
+        [self.alertView dismissWithClickedButtonIndex:1 animated:YES];
+    }
+    
+    return YES;
 }
 
 @end
