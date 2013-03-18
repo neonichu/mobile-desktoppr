@@ -43,6 +43,16 @@ static NSString* const kDesktopprServiceName = @"desktoppr.co";
     [request setValue:authValue forHTTPHeaderField:@"Authorization"];
 }
 
+-(void)followersForUser:(DesktopprUser*)user withCompletionHandler:(DesktopprArrayBlock)block {
+    NSString* path = [NSString stringWithFormat:@"users/%@/followers", user.username];
+    [self usersAtPath:path page:1 addedToArray:[NSMutableArray new] count:INT_MAX withCompletionHandler:block];
+}
+
+-(void)followingUsersForUser:(DesktopprUser*)user withCompletionHandler:(DesktopprArrayBlock)block {
+    NSString* path = [NSString stringWithFormat:@"users/%@/following", user.username];
+    [self usersAtPath:path page:1 addedToArray:[NSMutableArray new] count:INT_MAX withCompletionHandler:block];
+}
+
 -(void)getPath:(NSString *)path parameters:(NSDictionary *)parameters
        success:(void (^)(AFHTTPRequestOperation *, id))success
        failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
@@ -166,6 +176,34 @@ static NSString* const kDesktopprServiceName = @"desktoppr.co";
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              if (block) {
+                  block(nil, error);
+              }
+          }];
+}
+
+-(void)usersAtPath:(NSString*)path page:(NSInteger)page addedToArray:(NSMutableArray*)users count:(NSInteger)count
+        withCompletionHandler:(DesktopprArrayBlock)block {
+    [self getPath:path parameters:@{ @"page": @(page) }
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if (block) {
+                  for (NSDictionary* userDict in responseObject[@"response"]) {
+                      [users addObject:[[DesktopprUser alloc] initWithDictionary:userDict]];
+                  }
+                  
+                  if (users.count >= count || users.count == 0) {
+                      block(users, nil);
+                  } else {
+                      id next = responseObject[@"pagination"][@"next"];
+                      if (next == [NSNull null]) {
+                          block(users, nil);
+                          return;
+                      }
+                      NSInteger nextPage = [next integerValue];
+                      [self usersAtPath:path page:nextPage addedToArray:users count:count withCompletionHandler:block];
+                  }
+              }
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               if (block) {
                   block(nil, error);
               }

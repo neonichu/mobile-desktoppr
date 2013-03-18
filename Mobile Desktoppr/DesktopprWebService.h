@@ -19,6 +19,8 @@ typedef void(^DesktopprUserBlock)(DesktopprUser* user, NSError* error);
 
 +(instancetype)sharedService;
 
+-(void)followersForUser:(DesktopprUser*)user withCompletionHandler:(DesktopprArrayBlock)block;
+-(void)followingUsersForUser:(DesktopprUser*)user withCompletionHandler:(DesktopprArrayBlock)block;
 -(void)infoForUser:(NSString*)username withCompletionHandler:(DesktopprUserBlock)block;
 -(BOOL)isLoggedIn;
 -(void)likeWallpaper:(DesktopprPicture*)wallpaper;

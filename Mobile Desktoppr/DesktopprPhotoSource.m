@@ -8,7 +8,6 @@
 
 #import "DesktopprPhotoSource.h"
 #import "DesktopprPicture.h"
-#import "DesktopprScraper.h"
 #import "DesktopprUser.h"
 #import "DesktopprWebService.h"
 #import "UIAlertView+BBU.h"
@@ -19,7 +18,6 @@ static NSString* const kDefaultUser = @"neonacho";
 
 @property (weak) FGalleryViewController* gallery;
 @property (strong) NSArray* pictures;
-@property (strong) DesktopprScraper* scraper;
 @property (strong) DesktopprUser* user;
 
 @end
@@ -49,9 +47,6 @@ static NSString* const kDefaultUser = @"neonacho";
 - (id)initWithUser:(DesktopprUser*)user {
     self = [super init];
     if (self) {
-        // TODO: Remove scraper when no longer necessary
-        self.scraper = [DesktopprScraper new];
-        
         if (user) {
             self.user = user;
             
@@ -90,7 +85,7 @@ static NSString* const kDefaultUser = @"neonacho";
 }
 
 - (void)userListWithCompletionHandler:(DesktopprArrayBlock)block {
-    [self.scraper followingUsersForUser:self.user withCompletionHandler:block];
+    [[DesktopprWebService sharedService] followingUsersForUser:self.user withCompletionHandler:block];
 }
 
 - (NSString*)username {
