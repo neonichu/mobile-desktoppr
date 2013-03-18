@@ -19,3 +19,6 @@
 [submodule "vendor/ZYActivity"]
 	path = vendor/ZYActivity
 	url = https://github.com/marianoabdala/ZYActivity.git
+[submodule "vendor/sskeychain"]
+	path = vendor/sskeychain
+	url = https://github.com/soffes/sskeychain.git

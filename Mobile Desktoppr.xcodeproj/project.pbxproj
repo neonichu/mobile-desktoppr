@@ -83,6 +83,7 @@
 		86AA88F516F792800093D405 /* BBULikePictureActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AA88F416F792800093D405 /* BBULikePictureActivity.m */; };
 		86AA88F816F7929B0093D405 /* BBUSyncPictureActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AA88F716F7929B0093D405 /* BBUSyncPictureActivity.m */; };
 		86AA88FB16F79A220093D405 /* BBUAbstractPictureActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AA88FA16F79A220093D405 /* BBUAbstractPictureActivity.m */; };
+		86AA890316F7AC4D0093D405 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AA890216F7AC4D0093D405 /* SSKeychain.m */; };
 		86BD949B16F67EF50036575B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BD949A16F67EF50036575B /* Crashlytics.framework */; };
 		86BD94A016F69FD90036575B /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BD949F16F69FD90036575B /* UIImage+Resize.m */; };
 		86E7597216AA08CC00F0257F /* DesktopprScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597116AA08CC00F0257F /* DesktopprScraper.m */; };
@@ -234,6 +235,8 @@
 		86AA88F716F7929B0093D405 /* BBUSyncPictureActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUSyncPictureActivity.m; sourceTree = "<group>"; };
 		86AA88F916F79A220093D405 /* BBUAbstractPictureActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUAbstractPictureActivity.h; sourceTree = "<group>"; };
 		86AA88FA16F79A220093D405 /* BBUAbstractPictureActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUAbstractPictureActivity.m; sourceTree = "<group>"; };
+		86AA890116F7AC4D0093D405 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = vendor/sskeychain/SSKeychain/SSKeychain.h; sourceTree = "<group>"; };
+		86AA890216F7AC4D0093D405 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = vendor/sskeychain/SSKeychain/SSKeychain.m; sourceTree = "<group>"; };
 		86BD949A16F67EF50036575B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		86BD949C16F680AF0036575B /* API_Keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_Keys.h; sourceTree = "<group>"; };
 		86BD949E16F69FD80036575B /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
@@ -380,6 +383,7 @@
 				86E7597316AA234900F0257F /* html-parser */,
 				8689264E16B49D4700B0822A /* ISO8601DateFormatter */,
 				8688600316A88CB000B454F8 /* MBProgressHUD */,
+				86AA890016F7AC390093D405 /* SSKeychain */,
 				86AA88EC16F78D3E0093D405 /* ZYActivity */,
 			);
 			name = "Third Party";
@@ -523,6 +527,15 @@
 				8688600116A88A5500B454F8 /* BBUUserListViewController.m */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		86AA890016F7AC390093D405 /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				86AA890116F7AC4D0093D405 /* SSKeychain.h */,
+				86AA890216F7AC4D0093D405 /* SSKeychain.m */,
+			);
+			name = SSKeychain;
 			sourceTree = "<group>";
 		};
 		86E7597316AA234900F0257F /* html-parser */ = {
@@ -733,6 +746,7 @@
 				86AA88F516F792800093D405 /* BBULikePictureActivity.m in Sources */,
 				86AA88F816F7929B0093D405 /* BBUSyncPictureActivity.m in Sources */,
 				86AA88FB16F79A220093D405 /* BBUAbstractPictureActivity.m in Sources */,
+				86AA890316F7AC4D0093D405 /* SSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
