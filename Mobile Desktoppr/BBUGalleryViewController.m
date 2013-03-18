@@ -17,6 +17,7 @@
 #import "MBProgressHUD.h"
 #import "UIAlertView+BBU.h"
 
+#define ALBUM_NAME          NSLocalizedString(@"Homescreenr", nil)
 #define SCREENSHOT_MODE     0
 
 static NSString* const kUsedBefore = @"org.vu0.usedBefore";
@@ -34,6 +35,7 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 @interface BBUGalleryViewController () <DBRestClientDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong) UIBarButtonItem* addButton;
+@property (strong) ALAssetsLibrary* assetLibrary;
 @property (strong) DesktopprPhotoSource* desktopprPhotoSource;
 @property (nonatomic, strong) DBRestClient* dropboxClient;
 @property (strong) NSString* thumbnailNavigationTitle;
@@ -143,24 +145,14 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
     return self;
 }
 
-- (void)randomTapped {
-    [self enableSeeAll:NO];
-    [self.desktopprPhotoSource showRandomPicture];
-}
-
-- (void)saveTapped {
-    [self writeCurrentPictureToAssetGroup:nil];
-
-    // TODO: Finish code for writing to custom assets group
-#if 0
-    NSString* const albumName = NSLocalizedString(@"Homescreenr", nil);
-    
+- (void)moveAssetToGroup:(ALAsset*)asset {
     __block BOOL done = NO;
     
-    ALAssetsLibrary* library = [ALAssetsLibrary new];
-    [library enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:albumName]) {
-            [self writeCurrentPictureToAssetGroup:group];
+    [self.assetLibrary enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:ALBUM_NAME]) {
+            if (group.editable) {
+                [group addAsset:asset];
+            }
             
             done = YES;
             *stop = YES;
@@ -169,16 +161,61 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
         [UIAlertView bbu_showAlertWithError:error];
     }];
     
-    if (done) {
-        return;
+    if (!done) {
+        [self.assetLibrary addAssetsGroupAlbumWithName:ALBUM_NAME resultBlock:^(ALAssetsGroup *group) {
+            if (group.editable) {
+                [group addAsset:asset];
+            }
+        } failureBlock:^(NSError *error) {
+            [UIAlertView bbu_showAlertWithError:error];
+        }];
     }
     
-    [library addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *group) {
-        [self writeCurrentPictureToAssetGroup:group];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kUsedBefore]) {
+        [UIAlertView bbu_showInfoWithMessage:NSLocalizedString(@"The image was saved to your photo library, you can set it "
+                                                               "as wallpaper from there.", nil)];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUsedBefore];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    self.assetLibrary = nil;
+}
+
+- (void)moveAssetWithURLToGroup:(NSURL*)assetURL {
+    [self.assetLibrary assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+        [self moveAssetToGroup:asset];
     } failureBlock:^(NSError *error) {
         [UIAlertView bbu_showAlertWithError:error];
     }];
-#endif
+}
+
+- (void)randomTapped {
+    [self enableSeeAll:NO];
+    [self.desktopprPhotoSource showRandomPicture];
+}
+
+- (void)saveTapped {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    UIImage* currentPicture = [self->_photoViews[self.currentIndex] imageView].image;
+    if (!currentPicture) {
+        return;
+    }
+    // TODO: Make image fit device size and pixel-ratio to not waste space
+    
+    self.assetLibrary = [ALAssetsLibrary new];
+    [self.assetLibrary writeImageToSavedPhotosAlbum:currentPicture.CGImage metadata:nil
+                                    completionBlock:^(NSURL *assetURL, NSError *error) {
+                                        if (!assetURL) {
+                                            [UIAlertView bbu_showAlertWithError:error];
+                                            return;
+                                        }
+                                        
+                                        [self moveAssetWithURLToGroup:assetURL];
+                                    }];
 }
 
 - (void)settingsTapped {
@@ -203,43 +240,6 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
         BBUUserListViewController* userList = [[BBUUserListViewController alloc] initWithUsers:objects];
         [self.navigationController pushViewController:userList animated:YES];
     }];
-}
-
-- (void)writeCurrentPictureToAssetGroup:(ALAssetsGroup*)group {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    UIImage* currentPicture = [self->_photoViews[self.currentIndex] imageView].image;
-    if (!currentPicture) {
-        return;
-    }
-    // TODO: Make image fit device size and pixel-ratio to not waste space
-
-    UIImageWriteToSavedPhotosAlbum(currentPicture,
-                                   self,
-                                   @selector(writingCompletedWithImage:error:contextInfo:),
-                                   (__bridge void *)(group));
-}
-
-- (void)writingCompletedWithImage:(UIImage*)image error:(NSError*)error contextInfo:(void*)contextInfo {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
-    if (error) {
-        [UIAlertView bbu_showAlertWithError:error];
-        return;
-    }
-    
-    ALAssetsGroup* group = (__bridge ALAssetsGroup *)(contextInfo);
-    if (group.editable) {
-        // TODO: Finish code for writing to custom assets group
-    }
-    
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:kUsedBefore]) {
-        [UIAlertView bbu_showInfoWithMessage:NSLocalizedString(@"The image was saved to your photo library, you can set it "
-                                                               "as wallpaper from there.", nil)];
-        
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUsedBefore];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
 }
 
 #pragma mark - UIImagePickerController delegate methods
