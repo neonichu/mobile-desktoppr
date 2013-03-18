@@ -57,12 +57,20 @@ static NSString* const kDefaultUser = @"neonacho";
             
             [self fetchWallpapers];
         } else {
-            [[DesktopprWebService sharedService] infoForUser:kDefaultUser
-                                       withCompletionHandler:^(DesktopprUser *user, NSError *error) {
-                                           self.user = user;
-                                           
-                                           [self fetchWallpapers];
-                                       }];
+            if ([[DesktopprWebService sharedService] isLoggedIn]) {
+                [[DesktopprWebService sharedService] whoamiWithCompletionHandler:^(DesktopprUser *user, NSError *error) {
+                    self.user = user;
+                    
+                    [self fetchWallpapers];
+                }];
+            } else {
+                [[DesktopprWebService sharedService] infoForUser:kDefaultUser
+                                           withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+                                               self.user = user;
+                                               
+                                               [self fetchWallpapers];
+                                           }];
+            }
         }
     }
     return self;
