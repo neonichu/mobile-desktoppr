@@ -22,8 +22,11 @@ typedef void(^DesktopprUserBlock)(DesktopprUser* user, NSError* error);
 +(instancetype)sharedService;
 
 -(void)infoForUser:(NSString*)username withCompletionHandler:(DesktopprUserBlock)block;
+-(BOOL)isLoggedIn;
 -(void)likeWallpaper:(DesktopprPicture*)wallpaper;
 -(void)listOfUsersWithCompletionHandler:(DesktopprArrayBlock)block;
+-(void)loginWithUsername:(NSString*)username password:(NSString*)password withCompletionHandler:(DesktopprUserBlock)block;
+-(void)logout;
 -(void)randomWallpaperWithCompletionHandler:(DesktopprPictureBlock)block;
 -(void)randomWallpaperForUser:(NSString*)username withCompletionHandler:(DesktopprPictureBlock)block;
 -(void)selectWallpaper:(DesktopprPicture*)wallpaper;

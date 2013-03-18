@@ -84,6 +84,7 @@
 		86AA88F816F7929B0093D405 /* BBUSyncPictureActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AA88F716F7929B0093D405 /* BBUSyncPictureActivity.m */; };
 		86AA88FB16F79A220093D405 /* BBUAbstractPictureActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AA88FA16F79A220093D405 /* BBUAbstractPictureActivity.m */; };
 		86AA890316F7AC4D0093D405 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AA890216F7AC4D0093D405 /* SSKeychain.m */; };
+		86AA890616F7B10D0093D405 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AA890516F7B10D0093D405 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		86BD949B16F67EF50036575B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BD949A16F67EF50036575B /* Crashlytics.framework */; };
 		86BD94A016F69FD90036575B /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BD949F16F69FD90036575B /* UIImage+Resize.m */; };
 		86E7597216AA08CC00F0257F /* DesktopprScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597116AA08CC00F0257F /* DesktopprScraper.m */; };
@@ -237,6 +238,8 @@
 		86AA88FA16F79A220093D405 /* BBUAbstractPictureActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUAbstractPictureActivity.m; sourceTree = "<group>"; };
 		86AA890116F7AC4D0093D405 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = vendor/sskeychain/SSKeychain/SSKeychain.h; sourceTree = "<group>"; };
 		86AA890216F7AC4D0093D405 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = vendor/sskeychain/SSKeychain/SSKeychain.m; sourceTree = "<group>"; };
+		86AA890416F7B10D0093D405 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		86AA890516F7B10D0093D405 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		86BD949A16F67EF50036575B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		86BD949C16F680AF0036575B /* API_Keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_Keys.h; sourceTree = "<group>"; };
 		86BD949E16F69FD80036575B /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
@@ -500,6 +503,8 @@
 		86AA88FE16F79D680093D405 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				86AA890416F7B10D0093D405 /* NSData+Base64.h */,
+				86AA890516F7B10D0093D405 /* NSData+Base64.m */,
 				86885FEB16A8861C00B454F8 /* UIAlertView+BBU.h */,
 				86885FEC16A8861C00B454F8 /* UIAlertView+BBU.m */,
 				86BD949E16F69FD80036575B /* UIImage+Resize.h */,
@@ -747,6 +752,7 @@
 				86AA88F816F7929B0093D405 /* BBUSyncPictureActivity.m in Sources */,
 				86AA88FB16F79A220093D405 /* BBUAbstractPictureActivity.m in Sources */,
 				86AA890316F7AC4D0093D405 /* SSKeychain.m in Sources */,
+				86AA890616F7B10D0093D405 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

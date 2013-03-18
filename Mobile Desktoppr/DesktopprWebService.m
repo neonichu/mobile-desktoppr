@@ -10,6 +10,10 @@
 #import "DesktopprPicture.h"
 #import "DesktopprUser.h"
 #import "DesktopprWebService.h"
+#import "NSData+Base64.h"
+#import "SSKeychain.h"
+
+static NSString* const kDesktopprServiceName = @"desktoppr.co";
 
 @implementation DesktopprWebService
 
@@ -23,6 +27,13 @@
 }
 
 #pragma mark -
+
+-(void)addBasicAuthUsername:(NSString*)username password:(NSString*)password toRequest:(NSMutableURLRequest*)request {
+    NSString *authStr = [NSString stringWithFormat:@"%@:%@", username, password];
+    NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+    NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodingWithLineLength:80]];
+    [request setValue:authValue forHTTPHeaderField:@"Authorization"];
+}
 
 -(void)getPath:(NSString *)path parameters:(NSDictionary *)parameters
        success:(void (^)(AFHTTPRequestOperation *, id))success
@@ -48,8 +59,14 @@
     self = [super initWithBaseURL:[NSURL URLWithString:@"https://api.desktoppr.co/1"]];
     if (self) {
         NSAssert([self registerHTTPOperationClass:[AFJSONRequestOperation class]], @"Could not register");
+        
+        self.apiToken = [SSKeychain passwordForService:kDesktopprServiceName account:kDesktopprServiceName];
     }
     return self;
+}
+
+-(BOOL)isLoggedIn {
+    return self.apiToken != nil;
 }
 
 -(void)likeWallpaper:(DesktopprPicture*)wallpaper {
@@ -65,6 +82,36 @@
             block(nil, error);
         }
     }];
+}
+
+-(void)loginWithUsername:(NSString *)username password:(NSString *)password withCompletionHandler:(DesktopprUserBlock)block {
+    NSMutableURLRequest* request = [self requestWithMethod:@"GET" path:@"user/whoami" parameters:nil];
+    [self addBasicAuthUsername:username password:password toRequest:request];
+    
+    AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary* jsonData = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+            jsonData = jsonData[@"response"];
+            
+            DesktopprUser* user = [[DesktopprUser alloc] initWithDictionary:jsonData];
+            self.apiToken = user.api_token;
+            
+            if (self.apiToken) {
+                [SSKeychain setPassword:self.apiToken forService:kDesktopprServiceName account:kDesktopprServiceName];
+            }
+            
+            block(user, nil);
+        }
+        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            block(nil, error);
+        }];
+    [self enqueueHTTPRequestOperation:operation];
+}
+
+-(void)logout {
+    self.apiToken = nil;
+    
+    [SSKeychain deletePasswordForService:kDesktopprServiceName account:kDesktopprServiceName];
 }
 
 -(void)performActionWithName:(NSString*)name onWallpaper:(DesktopprPicture*)wallpaper {

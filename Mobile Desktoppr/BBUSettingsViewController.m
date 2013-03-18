@@ -9,17 +9,42 @@
 #import "BBUAboutViewController.h"
 #import "BBUSettingsViewController.h"
 #import "BBUTextViewController.h"
+#import "DesktopprWebService.h"
 #import "DropboxSDK.h"
+#import "MBProgressHUD.h"
+#import "UIAlertView+BBU.h"
 
 static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
 
-@interface BBUSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface BBUSettingsViewController () <UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end
 
 #pragma mark -
 
 @implementation BBUSettingsViewController
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    NSString* username = [alertView textFieldAtIndex:0].text;
+    NSString* password = [alertView textFieldAtIndex:1].text;
+    
+    if (buttonIndex > 0 && username && password) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [[DesktopprWebService sharedService] loginWithUsername:username
+                                                      password:password
+                                         withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+                                             [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                             
+                                             if (!user) {
+                                                 [UIAlertView bbu_showAlertWithError:error];
+                                                 return;
+                                             }
+                                             
+                                             [self.tableView reloadData];
+                                         }];
+    }
+}
 
 -(id)init {
     self = [super initWithStyle:UITableViewStyleGrouped];
@@ -46,14 +71,19 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
     
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.alpha = 0.5;
-            cell.textLabel.text = NSLocalizedString(@"Login", nil);
-            cell.userInteractionEnabled = NO;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            if ([[DesktopprWebService sharedService] isLoggedIn]) {
+                cell.textLabel.text = NSLocalizedString(@"Logout", nil);
+            } else {
+                cell.textLabel.text = NSLocalizedString(@"Login", nil);
+            }
             break;
         case 1:
+            cell.selectionStyle = UITableViewCellSelectionStyleGray;
             cell.textLabel.text = NSLocalizedString(@"License information", nil);
             break;
         case 2:
+            cell.selectionStyle = UITableViewCellSelectionStyleGray;
             cell.textLabel.text = NSLocalizedString(@"About", nil);
             break;
         case 3:
@@ -61,12 +91,12 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.text = NSLocalizedString(@"Unlink Dropbox", nil);
             } else {
+                cell.selectionStyle = UITableViewCellSelectionStyleGray;
                 cell.textLabel.text = NSLocalizedString(@"Link with Dropbox", nil);
             }
             break;
     }
     
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     return cell;
 }
 
@@ -84,6 +114,24 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
+        case 0: {
+            if ([[DesktopprWebService sharedService] isLoggedIn]) {
+                [[DesktopprWebService sharedService] logout];
+                [self.tableView reloadData];
+                return;
+            }
+            
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login to Desktoppr", nil)
+                                                                message:nil
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                                      otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+            alertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+            alertView.delegate = self;
+            [alertView show];
+            break;
+        }
+            
         case 1: {
             BBUTextViewController* licenseInfo = [BBUTextViewController new];
             licenseInfo.navigationItem.title = NSLocalizedString(@"License information", nil);
