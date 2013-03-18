@@ -52,9 +52,7 @@
     NSArray* activityItems = @[ [self->_photoViews[self.currentIndex] imageView].image,
                                 self.desktopprPhotoSource.pictures[self.currentIndex] ];
     
-    NSArray* activities = @[ [[BBULikePictureActivity alloc] initWithWebService:self.desktopprPhotoSource.webService],
-                             [BBUPhotoAlbumActivity new],
-                             [[BBUSyncPictureActivity alloc] initWithWebService:self.desktopprPhotoSource.webService] ];
+    NSArray* activities = @[ [BBULikePictureActivity new], [BBUPhotoAlbumActivity new], [BBUSyncPictureActivity new] ];
     
     UIActivityViewController* activitiesView = [[UIActivityViewController alloc] initWithActivityItems:activityItems
                                                                                  applicationActivities:activities];

@@ -21,7 +21,6 @@ static NSString* const kDefaultUser = @"neonacho";
 @property (strong) NSArray* pictures;
 @property (strong) DesktopprScraper* scraper;
 @property (strong) DesktopprUser* user;
-@property (strong) DesktopprWebService* webService;
 
 @end
 
@@ -30,16 +29,16 @@ static NSString* const kDefaultUser = @"neonacho";
 @implementation DesktopprPhotoSource
 
 - (void)fetchWallpapers {
-    [self.webService wallpapersForUser:self.username
-                                 count:40
-                 withCompletionHandler:^(NSArray *pictures, NSError *error) {
-                     if (pictures) {
-                         self.pictures = pictures;
-                         [self.gallery reloadGallery];
-                     } else {
-                         [UIAlertView bbu_showAlertWithError:error];
-                     }
-                 }];
+    [[DesktopprWebService sharedService] wallpapersForUser:self.username
+                                                     count:40
+                                     withCompletionHandler:^(NSArray *pictures, NSError *error) {
+                                         if (pictures) {
+                                             self.pictures = pictures;
+                                             [self.gallery reloadGallery];
+                                         } else {
+                                             [UIAlertView bbu_showAlertWithError:error];
+                                         }
+                                     }];
 }
 
 - (id)init {
@@ -50,27 +49,27 @@ static NSString* const kDefaultUser = @"neonacho";
 - (id)initWithUser:(DesktopprUser*)user {
     self = [super init];
     if (self) {
-        self.webService = [DesktopprWebService new];
         // TODO: Remove scraper when no longer necessary
-        self.scraper = [[DesktopprScraper alloc] initWithWebService:self.webService];
+        self.scraper = [DesktopprScraper new];
         
         if (user) {
             self.user = user;
             
             [self fetchWallpapers];
         } else {
-            [self.webService infoForUser:kDefaultUser withCompletionHandler:^(DesktopprUser *user, NSError *error) {
-                self.user = user;
-                
-                [self fetchWallpapers];
-            }];
+            [[DesktopprWebService sharedService] infoForUser:kDefaultUser
+                                       withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+                                           self.user = user;
+                                           
+                                           [self fetchWallpapers];
+                                       }];
         }
     }
     return self;
 }
 
 - (void)showRandomPicture {
-    [self.webService randomWallpaperWithCompletionHandler:^(DesktopprPicture *picture, NSError *error) {
+    [[DesktopprWebService sharedService] randomWallpaperWithCompletionHandler:^(DesktopprPicture *picture, NSError *error) {
         if (picture) {
             self.pictures = @[ picture ];
             [self.gallery reloadGallery];

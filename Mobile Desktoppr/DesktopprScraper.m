@@ -12,14 +12,6 @@
 #import "DesktopprUser.h"
 #import "DesktopprWebService.h"
 
-@interface DesktopprScraper ()
-
-@property (strong) DesktopprWebService* webService;
-
-@end
-
-#pragma mark -
-
 @implementation DesktopprScraper
 
 -(void)followingUsersForUser:(DesktopprUser*)user withCompletionHandler:(void(^)(NSArray* users, NSError* error))block {
@@ -32,21 +24,23 @@
               __block NSError* lastError;
               __block NSUInteger found = 0;
               for (NSString* following in followings) {
-                  [self.webService infoForUser:following withCompletionHandler:^(DesktopprUser *user, NSError *error) {
-                      found++;
-                      
-                      if (user) {
-                          [users addObject:user];
-                      } else {
-                          lastError = error;
-                      }
-                      
-                      if (found >= followings.count && block) {
-                          block([users sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                              return [[obj1 username] compare:[obj2 username]];
-                          }], lastError);
-                      }
-                  }];
+                  [[DesktopprWebService sharedService] infoForUser:following
+                                             withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+                                                 found++;
+                                                 
+                                                 if (user) {
+                                                     [users addObject:user];
+                                                 } else {
+                                                     lastError = error;
+                                                 }
+                                                 
+                                                 if (found >= followings.count && block) {
+                                                     block([users sortedArrayUsingComparator:^NSComparisonResult(id obj1,
+                                                                                                                 id obj2) {
+                                                         return [[obj1 username] compare:[obj2 username]];
+                                                     }], lastError);
+                                                 }
+                                             }];
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -54,11 +48,8 @@
           }];
 }
 
--(id)initWithWebService:(DesktopprWebService*)webService; {
+-(id)init {
     self = [super initWithBaseURL:[NSURL URLWithString:@"https://www.desktoppr.co/"]];
-    if (self) {
-        self.webService = webService;
-    }
     return self;
 }
 

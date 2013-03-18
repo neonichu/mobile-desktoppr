@@ -8,15 +8,6 @@
 
 #import "BBUAbstractPictureActivity.h"
 #import "DesktopprPicture.h"
-#import "DesktopprWebService.h"
-
-@interface BBUAbstractPictureActivity ()
-
-@property (strong) DesktopprWebService* webService;
-
-@end
-
-#pragma mark -
 
 @implementation BBUAbstractPictureActivity
 
@@ -28,14 +19,6 @@
     }
     
     return NO;
-}
-
--(id)initWithWebService:(DesktopprWebService*)webService {
-    self = [super init];
-    if (self) {
-        self.webService = webService;
-    }
-    return self;
 }
 
 -(void)performActivityWithPicture:(DesktopprPicture *)picture {

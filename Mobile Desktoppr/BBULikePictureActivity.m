@@ -20,7 +20,7 @@
 }
 
 -(void)performActivityWithPicture:(DesktopprPicture *)picture {
-    [self.webService likeWallpaper:picture];
+    [[DesktopprWebService sharedService] likeWallpaper:picture];
 }
 
 @end

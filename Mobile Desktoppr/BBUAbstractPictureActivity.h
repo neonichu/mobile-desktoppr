@@ -9,12 +9,9 @@
 #import "ZYActivity.h"
 
 @class DesktopprPicture;
-@class DesktopprWebService;
 
 @interface BBUAbstractPictureActivity : ZYActivity
 
--(id)initWithWebService:(DesktopprWebService*)webService;
 -(void)performActivityWithPicture:(DesktopprPicture*)picture;
--(DesktopprWebService*)webService;
 
 @end

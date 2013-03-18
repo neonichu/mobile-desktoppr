@@ -19,6 +19,8 @@ typedef void(^DesktopprUserBlock)(DesktopprUser* user, NSError* error);
 
 @property (strong) NSString* apiToken;
 
++(instancetype)sharedService;
+
 -(void)infoForUser:(NSString*)username withCompletionHandler:(DesktopprUserBlock)block;
 -(void)likeWallpaper:(DesktopprPicture*)wallpaper;
 -(void)listOfUsersWithCompletionHandler:(DesktopprArrayBlock)block;

@@ -9,11 +9,9 @@
 #import "AFHTTPClient.h"
 
 @class DesktopprUser;
-@class DesktopprWebService;
 
 @interface DesktopprScraper : AFHTTPClient
 
--(id)initWithWebService:(DesktopprWebService*)webService;
 -(void)followingUsersForUser:(DesktopprUser*)user withCompletionHandler:(void(^)(NSArray* users, NSError* error))block;
 
 @end
