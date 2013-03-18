@@ -94,10 +94,6 @@ static NSString* const kDefaultUser = @"neonacho";
     }];
 }
 
-- (void)userListWithCompletionHandler:(DesktopprArrayBlock)block {
-    [[DesktopprWebService sharedService] followingUsersForUser:self.user withCompletionHandler:block];
-}
-
 - (NSString*)username {
     return self.user.username;
 }

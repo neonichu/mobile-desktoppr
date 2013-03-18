@@ -17,6 +17,6 @@
 -(id)initWithUser:(DesktopprUser*)user;
 -(NSArray*)pictures;
 -(void)showRandomPicture;
--(void)userListWithCompletionHandler:(void(^)(NSArray* objects, NSError* error))block;
+-(DesktopprUser*)user;
 
 @end

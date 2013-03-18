@@ -180,17 +180,20 @@
     [self enableSeeAll:YES];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self.desktopprPhotoSource userListWithCompletionHandler:^(NSArray *objects, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-        if (!objects) {
-            [UIAlertView bbu_showAlertWithError:error];
-            return;
-        }
-        
-        BBUUserListViewController* userList = [[BBUUserListViewController alloc] initWithUsers:objects];
-        [self.navigationController pushViewController:userList animated:YES];
-    }];
+    [[DesktopprWebService sharedService] followingUsersForUser:self.desktopprPhotoSource.user
+                                         withCompletionHandler:^(NSArray *objects, NSError *error) {
+                                             [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                             
+                                             if (!objects) {
+                                                 [UIAlertView bbu_showAlertWithError:error];
+                                                 return;
+                                             }
+                                             
+                                             BBUUserListViewController* userList = [[BBUUserListViewController alloc]
+                                                                                    initWithUsers:objects];
+                                             userList.navigationItem.title = NSLocalizedString(@"Following", nil);
+                                             [self.navigationController pushViewController:userList animated:YES];
+                                         }];
 }
 
 #pragma mark - UIImagePickerController delegate methods
