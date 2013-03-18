@@ -217,7 +217,7 @@ static NSString* const kDesktopprServiceName = @"desktoppr.co";
 }
 
 -(void)whoamiWithCompletionHandler:(DesktopprUserBlock)block {
-    [self userInfoAtPath:@"user/whomai" withCompletionHandler:block];
+    [self userInfoAtPath:@"user/whoami" withCompletionHandler:block];
 }
 
 @end
