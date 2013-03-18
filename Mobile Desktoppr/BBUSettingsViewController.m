@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Boris Bügling. All rights reserved.
 //
 
+#import "BBUAboutViewController.h"
 #import "BBUSettingsViewController.h"
 #import "BBUTextViewController.h"
 #import "DropboxSDK.h"
@@ -53,10 +54,7 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
             cell.textLabel.text = NSLocalizedString(@"License information", nil);
             break;
         case 2:
-            // TODO: Implement about screen
-            cell.textLabel.alpha = 0.5;
             cell.textLabel.text = NSLocalizedString(@"About", nil);
-            cell.userInteractionEnabled = NO;
             break;
         case 3:
             if ([[DBSession sharedSession] isLinked]) {
@@ -91,6 +89,12 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
             licenseInfo.navigationItem.title = NSLocalizedString(@"License information", nil);
             [self.navigationController pushViewController:licenseInfo animated:YES];
             [licenseInfo showTextFromBundleResource:@"licenses" ofType:@"txt"];
+            break;
+        }
+            
+        case 2: {
+            BBUAboutViewController* about = [BBUAboutViewController new];
+            [self.navigationController pushViewController:about animated:YES];
             break;
         }
             

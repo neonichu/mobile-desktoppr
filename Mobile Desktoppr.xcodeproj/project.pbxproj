@@ -61,6 +61,13 @@
 		8689267D16B6B4AE00B0822A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8689267516B6B4AE00B0822A /* Icon@2x.png */; };
 		868A4DCA16B70E5300A5F971 /* libSDropboxSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868A4DC516B70E1800A5F971 /* libSDropboxSDK.a */; };
 		868A4DCC16B70F0700A5F971 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868A4DCB16B70F0700A5F971 /* Security.framework */; };
+		86AA88C316F75F5C0093D405 /* BBUAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AA88C216F75F5C0093D405 /* BBUAboutViewController.m */; };
+		86AA88C716F75FC50093D405 /* avatar_donswelt@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86AA88C616F75FC50093D405 /* avatar_donswelt@2x.jpg */; };
+		86AA88C916F75FDC0093D405 /* avatar_neonacho@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86AA88C816F75FDC0093D405 /* avatar_neonacho@2x.jpg */; };
+		86AA88CC16F760470093D405 /* avatar_donswelt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86AA88CA16F760470093D405 /* avatar_donswelt.jpg */; };
+		86AA88CD16F760470093D405 /* avatar_neonacho.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86AA88CB16F760470093D405 /* avatar_neonacho.jpg */; };
+		86AA88D316F760D70093D405 /* UIView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AA88D216F760D70093D405 /* UIView+Geometry.m */; };
+		86AA88D516F768620093D405 /* desktoppr_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 86AA88D416F768620093D405 /* desktoppr_logo.png */; };
 		86BD949B16F67EF50036575B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BD949A16F67EF50036575B /* Crashlytics.framework */; };
 		86BD94A016F69FD90036575B /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BD949F16F69FD90036575B /* UIImage+Resize.m */; };
 		86E7597216AA08CC00F0257F /* DesktopprScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597116AA08CC00F0257F /* DesktopprScraper.m */; };
@@ -183,6 +190,15 @@
 		8689267516B6B4AE00B0822A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		868A4DBC16B70E1800A5F971 /* DropboxSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DropboxSDK.xcodeproj; path = vendor/dropbox/DropboxSDK/DropboxSDK.xcodeproj; sourceTree = "<group>"; };
 		868A4DCB16B70F0700A5F971 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		86AA88C116F75F5C0093D405 /* BBUAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUAboutViewController.h; sourceTree = "<group>"; };
+		86AA88C216F75F5C0093D405 /* BBUAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUAboutViewController.m; sourceTree = "<group>"; };
+		86AA88C616F75FC50093D405 /* avatar_donswelt@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "avatar_donswelt@2x.jpg"; sourceTree = "<group>"; };
+		86AA88C816F75FDC0093D405 /* avatar_neonacho@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "avatar_neonacho@2x.jpg"; sourceTree = "<group>"; };
+		86AA88CA16F760470093D405 /* avatar_donswelt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar_donswelt.jpg; sourceTree = "<group>"; };
+		86AA88CB16F760470093D405 /* avatar_neonacho.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar_neonacho.jpg; sourceTree = "<group>"; };
+		86AA88D116F760D70093D405 /* UIView+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Geometry.h"; sourceTree = "<group>"; };
+		86AA88D216F760D70093D405 /* UIView+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Geometry.m"; sourceTree = "<group>"; };
+		86AA88D416F768620093D405 /* desktoppr_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desktoppr_logo.png; sourceTree = "<group>"; };
 		86BD949A16F67EF50036575B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		86BD949C16F680AF0036575B /* API_Keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_Keys.h; sourceTree = "<group>"; };
 		86BD949E16F69FD80036575B /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
@@ -259,6 +275,8 @@
 			isa = PBXGroup;
 			children = (
 				86BD949C16F680AF0036575B /* API_Keys.h */,
+				86AA88C116F75F5C0093D405 /* BBUAboutViewController.h */,
+				86AA88C216F75F5C0093D405 /* BBUAboutViewController.m */,
 				69E4BF0516A41B81004F8E3D /* BBUAppDelegate.h */,
 				69E4BF0616A41B81004F8E3D /* BBUAppDelegate.m */,
 				86885FD716A7791300B454F8 /* BBUGalleryViewController.h */,
@@ -283,6 +301,8 @@
 				86885FEC16A8861C00B454F8 /* UIAlertView+BBU.m */,
 				86BD949E16F69FD80036575B /* UIImage+Resize.h */,
 				86BD949F16F69FD90036575B /* UIImage+Resize.m */,
+				86AA88D116F760D70093D405 /* UIView+Geometry.h */,
+				86AA88D216F760D70093D405 /* UIView+Geometry.m */,
 			);
 			path = "Mobile Desktoppr";
 			sourceTree = "<group>";
@@ -301,9 +321,14 @@
 		69E4BF1316A41BB2004F8E3D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				86AA88CA16F760470093D405 /* avatar_donswelt.jpg */,
+				86AA88C616F75FC50093D405 /* avatar_donswelt@2x.jpg */,
+				86AA88CB16F760470093D405 /* avatar_neonacho.jpg */,
+				86AA88C816F75FDC0093D405 /* avatar_neonacho@2x.jpg */,
 				69E4BF0816A41B81004F8E3D /* Default.png */,
 				69E4BF0A16A41B81004F8E3D /* Default@2x.png */,
 				69E4BF0C16A41B81004F8E3D /* Default-568h@2x.png */,
+				86AA88D416F768620093D405 /* desktoppr_logo.png */,
 				86885FDF16A883C200B454F8 /* earthquake.png */,
 				86885FE416A883C300B454F8 /* earthquake@2x.png */,
 				86885FDB16A8818700B454F8 /* gears.png */,
@@ -521,6 +546,11 @@
 				8689267B16B6B4AE00B0822A /* Icon-Small@2x.png in Resources */,
 				8689267C16B6B4AE00B0822A /* Icon.png in Resources */,
 				8689267D16B6B4AE00B0822A /* Icon@2x.png in Resources */,
+				86AA88C716F75FC50093D405 /* avatar_donswelt@2x.jpg in Resources */,
+				86AA88C916F75FDC0093D405 /* avatar_neonacho@2x.jpg in Resources */,
+				86AA88CC16F760470093D405 /* avatar_donswelt.jpg in Resources */,
+				86AA88CD16F760470093D405 /* avatar_neonacho.jpg in Resources */,
+				86AA88D516F768620093D405 /* desktoppr_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +621,8 @@
 				86E7597916AA236700F0257F /* DTHTMLParser.m in Sources */,
 				8689265216B49D7800B0822A /* ISO8601DateFormatter.m in Sources */,
 				86BD94A016F69FD90036575B /* UIImage+Resize.m in Sources */,
+				86AA88C316F75F5C0093D405 /* BBUAboutViewController.m in Sources */,
+				86AA88D316F760D70093D405 /* UIView+Geometry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
