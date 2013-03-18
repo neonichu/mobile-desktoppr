@@ -41,11 +41,11 @@
     [[UIToolbar appearance] setTintColor:[UIColor lightGrayColor]];
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    
     DBSession* dbSession = [[DBSession alloc] initWithAppKey:DROPBOX_APP_KEY
                                                    appSecret:DROPBOX_APP_SECRET
                                                         root:kDBRootDropbox];
     [DBSession setSharedSession:dbSession];
-    //[[DBSession sharedSession] unlinkAll];
     
     return YES;
 }
