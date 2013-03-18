@@ -181,6 +181,13 @@
     [self.desktopprPhotoSource showRandomPicture];
 }
 
+- (void)reloadGallery {
+    self.navigationItem.title = @"";
+    self->_caption.text = @"";
+    
+    [super reloadGallery];
+}
+
 - (void)settingsTapped {
     BBUSettingsViewController* settings = [BBUSettingsViewController new];
     [self.navigationController pushViewController:settings animated:YES];
