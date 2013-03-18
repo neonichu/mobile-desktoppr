@@ -48,8 +48,6 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
 @implementation BBUGalleryViewController
 
 - (void)addTapped {
-    self.addButton.enabled = NO;
-    
     if (![[DBSession sharedSession] isLinked]) {
         [[DBSession sharedSession] linkFromController:self];
     } else {
@@ -282,16 +280,12 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
     
     [[NSFileManager defaultManager] removeItemAtPath:srcPath error:nil];
     [UIAlertView bbu_showInfoWithMessage:NSLocalizedString(@"Upload finished successfully.", nil)];
-    
-    self.addButton.enabled = YES;
 }
 
 - (void)restClient:(DBRestClient *)client uploadFileFailedWithError:(NSError *)error {
     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
     
     [UIAlertView bbu_showAlertWithError:error];
-    
-    self.addButton.enabled = YES;
 }
 
 - (void)uploadFileAtPath:(NSString*)filePath withName:(NSString*)name {
