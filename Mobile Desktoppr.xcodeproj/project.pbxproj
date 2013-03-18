@@ -62,6 +62,7 @@
 		868A4DCA16B70E5300A5F971 /* libSDropboxSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868A4DC516B70E1800A5F971 /* libSDropboxSDK.a */; };
 		868A4DCC16B70F0700A5F971 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868A4DCB16B70F0700A5F971 /* Security.framework */; };
 		86BD949B16F67EF50036575B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BD949A16F67EF50036575B /* Crashlytics.framework */; };
+		86BD94A016F69FD90036575B /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BD949F16F69FD90036575B /* UIImage+Resize.m */; };
 		86E7597216AA08CC00F0257F /* DesktopprScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597116AA08CC00F0257F /* DesktopprScraper.m */; };
 		86E7597616AA235900F0257F /* BBUHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597516AA235900F0257F /* BBUHTMLParser.m */; };
 		86E7597916AA236700F0257F /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E7597816AA236700F0257F /* DTHTMLParser.m */; };
@@ -184,6 +185,8 @@
 		868A4DCB16B70F0700A5F971 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		86BD949A16F67EF50036575B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		86BD949C16F680AF0036575B /* API_Keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_Keys.h; sourceTree = "<group>"; };
+		86BD949E16F69FD80036575B /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		86BD949F16F69FD90036575B /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		86E7597016AA08CC00F0257F /* DesktopprScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesktopprScraper.h; sourceTree = "<group>"; };
 		86E7597116AA08CC00F0257F /* DesktopprScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopprScraper.m; sourceTree = "<group>"; };
 		86E7597416AA235900F0257F /* BBUHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBUHTMLParser.h; path = "vendor/html-parser/BBUHTMLParser.h"; sourceTree = "<group>"; };
@@ -278,6 +281,8 @@
 				69E4BF4D16A41F2D004F8E3D /* DesktopprWebService.m */,
 				86885FEB16A8861C00B454F8 /* UIAlertView+BBU.h */,
 				86885FEC16A8861C00B454F8 /* UIAlertView+BBU.m */,
+				86BD949E16F69FD80036575B /* UIImage+Resize.h */,
+				86BD949F16F69FD90036575B /* UIImage+Resize.m */,
 			);
 			path = "Mobile Desktoppr";
 			sourceTree = "<group>";
@@ -585,6 +590,7 @@
 				86E7597616AA235900F0257F /* BBUHTMLParser.m in Sources */,
 				86E7597916AA236700F0257F /* DTHTMLParser.m in Sources */,
 				8689265216B49D7800B0822A /* ISO8601DateFormatter.m in Sources */,
+				86BD94A016F69FD90036575B /* UIImage+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

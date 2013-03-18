@@ -16,6 +16,7 @@
 #import "DropboxSDK.h"
 #import "MBProgressHUD.h"
 #import "UIAlertView+BBU.h"
+#import "UIImage+Resize.h"
 
 #define ALBUM_NAME          NSLocalizedString(@"Homescreenr", nil)
 #define SCREENSHOT_MODE     0
@@ -204,7 +205,12 @@ static NSString* const kUsedBefore = @"org.vu0.usedBefore";
     if (!currentPicture) {
         return;
     }
-    // TODO: Make image fit device size and pixel-ratio to not waste space
+    
+    CGFloat neededWidth = [[UIScreen mainScreen] bounds].size.width * [UIScreen mainScreen].scale;
+    if (neededWidth < currentPicture.size.width) {
+        CGFloat neededHeight = currentPicture.size.height * (neededWidth / currentPicture.size.width);
+        currentPicture = [currentPicture bbu_scaledImageWithSize:CGSizeMake(neededWidth, neededHeight)];
+    }
     
     self.assetLibrary = [ALAssetsLibrary new];
     [self.assetLibrary writeImageToSavedPhotosAlbum:currentPicture.CGImage metadata:nil
