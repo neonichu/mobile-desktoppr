@@ -310,35 +310,10 @@
 			isa = PBXGroup;
 			children = (
 				86AA88FC16F79B770093D405 /* Activities */,
+				86AA88FD16F79D500093D405 /* API */,
+				86AA88FE16F79D680093D405 /* Categories */,
+				86AA88FF16F79D720093D405 /* UI */,
 				86BD949C16F680AF0036575B /* API_Keys.h */,
-				86AA88C116F75F5C0093D405 /* BBUAboutViewController.h */,
-				86AA88C216F75F5C0093D405 /* BBUAboutViewController.m */,
-				69E4BF0516A41B81004F8E3D /* BBUAppDelegate.h */,
-				69E4BF0616A41B81004F8E3D /* BBUAppDelegate.m */,
-				86885FD716A7791300B454F8 /* BBUGalleryViewController.h */,
-				86885FD816A7791300B454F8 /* BBUGalleryViewController.m */,
-				8688600916A89D1D00B454F8 /* BBUSettingsViewController.h */,
-				8688600A16A89D1D00B454F8 /* BBUSettingsViewController.m */,
-				8688600E16A8A11800B454F8 /* BBUTextViewController.h */,
-				8688600F16A8A11800B454F8 /* BBUTextViewController.m */,
-				8688600016A88A5500B454F8 /* BBUUserListViewController.h */,
-				8688600116A88A5500B454F8 /* BBUUserListViewController.m */,
-				69E4BF2C16A41D94004F8E3D /* DesktopprPhotoSource.h */,
-				69E4BF2D16A41D94004F8E3D /* DesktopprPhotoSource.m */,
-				69E4BF5316A42248004F8E3D /* DesktopprPicture.h */,
-				69E4BF5416A42248004F8E3D /* DesktopprPicture.m */,
-				86E7597016AA08CC00F0257F /* DesktopprScraper.h */,
-				86E7597116AA08CC00F0257F /* DesktopprScraper.m */,
-				69C40A5316A4598200E05322 /* DesktopprUser.h */,
-				69C40A5416A4598200E05322 /* DesktopprUser.m */,
-				69E4BF4C16A41F2D004F8E3D /* DesktopprWebService.h */,
-				69E4BF4D16A41F2D004F8E3D /* DesktopprWebService.m */,
-				86885FEB16A8861C00B454F8 /* UIAlertView+BBU.h */,
-				86885FEC16A8861C00B454F8 /* UIAlertView+BBU.m */,
-				86BD949E16F69FD80036575B /* UIImage+Resize.h */,
-				86BD949F16F69FD90036575B /* UIImage+Resize.m */,
-				86AA88D116F760D70093D405 /* UIView+Geometry.h */,
-				86AA88D216F760D70093D405 /* UIView+Geometry.m */,
 			);
 			path = "Mobile Desktoppr";
 			sourceTree = "<group>";
@@ -499,6 +474,55 @@
 				86AA88F716F7929B0093D405 /* BBUSyncPictureActivity.m */,
 			);
 			name = Activities;
+			sourceTree = "<group>";
+		};
+		86AA88FD16F79D500093D405 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				69E4BF2C16A41D94004F8E3D /* DesktopprPhotoSource.h */,
+				69E4BF2D16A41D94004F8E3D /* DesktopprPhotoSource.m */,
+				69E4BF5316A42248004F8E3D /* DesktopprPicture.h */,
+				69E4BF5416A42248004F8E3D /* DesktopprPicture.m */,
+				86E7597016AA08CC00F0257F /* DesktopprScraper.h */,
+				86E7597116AA08CC00F0257F /* DesktopprScraper.m */,
+				69C40A5316A4598200E05322 /* DesktopprUser.h */,
+				69C40A5416A4598200E05322 /* DesktopprUser.m */,
+				69E4BF4C16A41F2D004F8E3D /* DesktopprWebService.h */,
+				69E4BF4D16A41F2D004F8E3D /* DesktopprWebService.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		86AA88FE16F79D680093D405 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				86885FEB16A8861C00B454F8 /* UIAlertView+BBU.h */,
+				86885FEC16A8861C00B454F8 /* UIAlertView+BBU.m */,
+				86BD949E16F69FD80036575B /* UIImage+Resize.h */,
+				86BD949F16F69FD90036575B /* UIImage+Resize.m */,
+				86AA88D116F760D70093D405 /* UIView+Geometry.h */,
+				86AA88D216F760D70093D405 /* UIView+Geometry.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		86AA88FF16F79D720093D405 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				86AA88C116F75F5C0093D405 /* BBUAboutViewController.h */,
+				86AA88C216F75F5C0093D405 /* BBUAboutViewController.m */,
+				69E4BF0516A41B81004F8E3D /* BBUAppDelegate.h */,
+				69E4BF0616A41B81004F8E3D /* BBUAppDelegate.m */,
+				86885FD716A7791300B454F8 /* BBUGalleryViewController.h */,
+				86885FD816A7791300B454F8 /* BBUGalleryViewController.m */,
+				8688600916A89D1D00B454F8 /* BBUSettingsViewController.h */,
+				8688600A16A89D1D00B454F8 /* BBUSettingsViewController.m */,
+				8688600E16A8A11800B454F8 /* BBUTextViewController.h */,
+				8688600F16A8A11800B454F8 /* BBUTextViewController.m */,
+				8688600016A88A5500B454F8 /* BBUUserListViewController.h */,
+				8688600116A88A5500B454F8 /* BBUUserListViewController.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		86E7597316AA234900F0257F /* html-parser */ = {
