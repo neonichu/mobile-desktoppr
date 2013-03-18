@@ -17,8 +17,6 @@ typedef void(^DesktopprUserBlock)(DesktopprUser* user, NSError* error);
 
 @interface DesktopprWebService : AFHTTPClient
 
-@property (strong) NSString* apiToken;
-
 +(instancetype)sharedService;
 
 -(void)infoForUser:(NSString*)username withCompletionHandler:(DesktopprUserBlock)block;

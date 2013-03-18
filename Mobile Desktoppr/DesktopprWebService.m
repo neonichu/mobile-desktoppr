@@ -15,6 +15,14 @@
 
 static NSString* const kDesktopprServiceName = @"desktoppr.co";
 
+@interface DesktopprWebService ()
+
+@property (strong) NSString* apiToken;
+
+@end
+
+#pragma mark -
+
 @implementation DesktopprWebService
 
 +(instancetype)sharedService {
