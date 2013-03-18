@@ -8,6 +8,7 @@
 
 #import "BBUSettingsViewController.h"
 #import "BBUTextViewController.h"
+#import "DropboxSDK.h"
 
 static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
 
@@ -57,6 +58,14 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
             cell.textLabel.text = NSLocalizedString(@"About", nil);
             cell.userInteractionEnabled = NO;
             break;
+        case 3:
+            if ([[DBSession sharedSession] isLinked]) {
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.text = NSLocalizedString(@"Unlink Dropbox", nil);
+            } else {
+                cell.textLabel.text = NSLocalizedString(@"Link with Dropbox", nil);
+            }
+            break;
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -64,7 +73,13 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableView delegate methods
@@ -78,6 +93,15 @@ static NSString* const kCellIdentifier = @"SettingsCellIdentifier";
             [licenseInfo showTextFromBundleResource:@"licenses" ofType:@"txt"];
             break;
         }
+            
+        case 3:
+            if ([[DBSession sharedSession] isLinked]) {
+                [[DBSession sharedSession] unlinkAll];
+                [self.tableView reloadData];
+            } else {
+                [[DBSession sharedSession] linkFromController:self];
+            }
+            break;
     }
 }
 
