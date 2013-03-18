@@ -17,6 +17,7 @@
 
 -(NSDictionary*)externalRepresentation {
     NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+    dict[@"api_token"] = self.api_token;
 	dict[@"avatar_url"] = self.avatar_url;
 	dict[@"created_at"] = self.created_at;
 	dict[@"followers_count"] = self.followers_count;
@@ -32,6 +33,7 @@
 -(id)initWithDictionary:(NSDictionary*)dictionary {
     self = [super init];
     if (self) {
+        _api_token = dictionary[@"api_token"];
 		NSString* avatar_url = dictionary[@"avatar_url"];
 		_avatar_url = avatar_url ? [NSURL URLWithString:avatar_url] : nil;
         _created_at = [[ISO8601DateFormatter new] dateFromString:dictionary[@"created_at"]];

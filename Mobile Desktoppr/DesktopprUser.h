@@ -10,6 +10,7 @@
 
 @interface DesktopprUser : NSObject
 
+@property (readonly) NSString* api_token;
 @property (readonly) NSURL* avatar_url;
 @property (readonly) NSDate* created_at;
 @property (readonly) NSNumber* followers_count;

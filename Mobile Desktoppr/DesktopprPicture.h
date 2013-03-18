@@ -15,9 +15,9 @@
 @property (readonly) NSNumber* height;
 @property (readonly) NSNumber* id;
 @property (readonly) NSString* review_state;
+@property (readonly) NSString* uploader;
 @property (readonly) NSURL* url;
 @property (readonly) NSNumber* user_count;
-@property (readonly) NSNumber* user_id;
 @property (readonly) NSNumber* views_count;
 @property (readonly) NSNumber* width;
 
