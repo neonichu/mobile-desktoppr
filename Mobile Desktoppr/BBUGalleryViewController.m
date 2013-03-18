@@ -14,6 +14,7 @@
 #import "BBUSyncPictureActivity.h"
 #import "BBUUserListViewController.h"
 #import "DesktopprPhotoSource.h"
+#import "DesktopprWebService.h"
 #import "DropboxSDK.h"
 #import "MBProgressHUD.h"
 #import "UIAlertView+BBU.h"
@@ -74,6 +75,23 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)browseTapped {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[DesktopprWebService sharedService] listOfUsersWithCompletionHandler:^(NSArray *objects, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if (!objects) {
+            [UIAlertView bbu_showAlertWithError:error];
+            return;
+        }
+        
+        BBUUserListViewController* userList = [[BBUUserListViewController alloc] initWithUsers:objects];
+        userList.navigationItem.title = NSLocalizedString(@"Users", nil);
+        [self.navigationController pushViewController:userList animated:YES];
+    }];
+}
+
 - (void)enableSeeAll:(BOOL)enabled {
     self.navigationItem.rightBarButtonItem.enabled = enabled;
 }
@@ -101,7 +119,6 @@
         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:NULL],
         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:NULL],
     ];
-    [barItems[3] setEnabled:NO];
     
     self.addButton = barItems[0];
     

@@ -92,12 +92,37 @@ static NSString* const kDesktopprServiceName = @"desktoppr.co";
 }
 
 -(void)listOfUsersWithCompletionHandler:(DesktopprArrayBlock)block {
-    // FIXME: Hardcoded just one user here, because API lacks user listing.
-    [self infoForUser:@"keithpitt" withCompletionHandler:^(DesktopprUser *user, NSError *error) {
-        if (user) {
-            block(@[ user ], nil);
-        } else {
+    [self wallpapersAtPath:@"wallpapers" count:20 withCompletionHandler:^(NSArray *objects, NSError *error) {
+        if (!objects) {
             block(nil, error);
+            return;
+        }
+        
+        NSMutableArray* usernames = [NSMutableArray new];
+        for (DesktopprPicture* picture in objects) {
+            if (![usernames containsObject:picture.uploader]) {
+                [usernames addObject:picture.uploader];
+            }
+        }
+        
+        __block NSMutableArray* users = [NSMutableArray new];
+        __block NSInteger toFetchCount = usernames.count;
+        
+        for (NSString* username in usernames) {
+            [self infoForUser:username withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+                toFetchCount--;
+                
+                if (user) {
+                    [users addObject:user];
+                } else {
+                    block(nil, error);
+                    return;
+                }
+                
+                if (toFetchCount <= 0) {
+                    block(users, nil);
+                }
+            }];
         }
     }];
 }
