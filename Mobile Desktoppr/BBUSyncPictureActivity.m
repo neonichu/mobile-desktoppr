@@ -20,7 +20,7 @@
 }
 
 -(void)performActivityWithPicture:(DesktopprPicture *)picture {
-    // TODO: Implement.
+    [[DesktopprWebService sharedService] selectWallpaper:picture];
 }
 
 @end
