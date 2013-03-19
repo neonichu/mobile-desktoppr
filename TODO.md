@@ -15,3 +15,5 @@
 - [X] iPhone 5 support
 - [X] iPad support
 - [ ] App Store release
+- [ ] Follow/Unfollow user (action button on all pictures page)
+- [ ] View list of liked wallpapers of a user
