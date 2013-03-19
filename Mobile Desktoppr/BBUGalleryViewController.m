@@ -71,6 +71,25 @@
     }
 }
 
+- (void)addTitleActionToPhotoSource:(DesktopprPhotoSource*)photoSource {
+    photoSource.titleTapAction = ^(NSString* title) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [[DesktopprWebService sharedService] infoForUser:title
+                                   withCompletionHandler:^(DesktopprUser *user, NSError *error) {
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                       
+                                       if (!user) {
+                                           [UIAlertView bbu_showAlertWithError:error];
+                                           return;
+                                       }
+                                       
+                                       BBUGalleryViewController* gallery = [[BBUGalleryViewController alloc] initWithUser:user];
+                                       [self.navigationController pushViewController:gallery animated:YES];
+                                   }];
+    };
+}
+
 - (void)backTapped {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -104,6 +123,7 @@
 
 - (id)init {
     DesktopprPhotoSource* photoSource = [DesktopprPhotoSource new];
+    [self addTitleActionToPhotoSource:photoSource];
     
     NSArray* barItems = @[
         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addTapped)],
@@ -156,6 +176,7 @@
 
 -(id)initWithUser:(DesktopprUser*)user {
     DesktopprPhotoSource* photoSource = [[DesktopprPhotoSource alloc] initWithUser:user];
+    [self addTitleActionToPhotoSource:photoSource];
     
     NSArray* barItems = @[
         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel

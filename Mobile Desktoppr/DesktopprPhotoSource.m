@@ -101,8 +101,12 @@ static NSString* const kDefaultUser = @"neonacho";
         if (picture) {
             self.pictures = @[ picture ];
             [self.gallery reloadGallery];
-            // TODO: User as navigation title
-            // TODO: Tap navigation title to jump to user
+            
+            UIButton* titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            [titleButton addTarget:self action:@selector(titleTapped:) forControlEvents:UIControlEventTouchUpInside];
+            [titleButton setTitle:picture.uploader forState:UIControlStateNormal];
+            titleButton.titleLabel.font = [UIFont boldSystemFontOfSize:titleButton.titleLabel.font.pointSize];
+            self.gallery.navigationItem.titleView = titleButton;
         } else {
             [UIAlertView bbu_showAlertWithError:error];
         }
@@ -113,6 +117,12 @@ static NSString* const kDefaultUser = @"neonacho";
     self.user = user;
     
     [self fetchWallpapers];
+}
+
+- (void)titleTapped:(UIButton*)button {
+    if (self.titleTapAction) {
+        self.titleTapAction(button.titleLabel.text);
+    }
 }
 
 - (NSString*)username {

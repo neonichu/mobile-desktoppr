@@ -8,10 +8,13 @@
 
 #import "FGalleryViewController.h"
 
+typedef void(^BBUTitleTapAction)(NSString* title);
+
 @class DesktopprUser;
 
 @interface DesktopprPhotoSource : NSObject <FGalleryViewControllerDelegate>
 
+@property (copy) BBUTitleTapAction titleTapAction;
 @property (readonly) NSString* username;
 
 -(id)initWithUser:(DesktopprUser*)user;
