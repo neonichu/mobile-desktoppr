@@ -18,5 +18,6 @@
 - [ ] Follow/Unfollow user (action button on all pictures page)
 - [ ] View list of liked wallpapers of a user
 - [ ] Display like/sync status of pictures
+- [ ] Display number of likes/syncs for pictures
 - [ ] Unlike individual pictures
 - [ ] Unsync individual pictures
