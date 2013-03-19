@@ -7,6 +7,7 @@
 //
 
 #import "AFNetworkActivityIndicatorManager.h"
+#import "BBUFollowersViewController.h"
 #import "BBUGalleryViewController.h"
 #import "BBULikePictureActivity.h"
 #import "BBUPhotoAlbumActivity.h"
@@ -106,7 +107,6 @@
         }
         
         BBUUserListViewController* userList = [[BBUUserListViewController alloc] initWithUsers:objects];
-        userList.navigationItem.title = NSLocalizedString(@"Users", nil);
         [self.navigationController pushViewController:userList animated:YES];
     }];
 }
@@ -234,9 +234,9 @@
                                                  return;
                                              }
                                              
-                                             BBUUserListViewController* userList = [[BBUUserListViewController alloc]
+                                             BBUFollowersViewController* userList = [[BBUFollowersViewController alloc]
                                                                                     initWithUsers:objects];
-                                             userList.navigationItem.title = NSLocalizedString(@"Following", nil);
+                                             userList.user = self.desktopprPhotoSource.user;
                                              [self.navigationController pushViewController:userList animated:YES];
                                          }];
 }

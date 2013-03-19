@@ -10,6 +10,8 @@
 
 @interface BBUUserListViewController : UITableViewController
 
+@property (strong) NSArray* users;
+
 -(id)initWithUsers:(NSArray*)users;
 
 @end

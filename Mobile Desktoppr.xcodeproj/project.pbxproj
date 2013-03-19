@@ -61,6 +61,7 @@
 		8689267D16B6B4AE00B0822A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8689267516B6B4AE00B0822A /* Icon@2x.png */; };
 		868A4DCA16B70E5300A5F971 /* libSDropboxSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868A4DC516B70E1800A5F971 /* libSDropboxSDK.a */; };
 		868A4DCC16B70F0700A5F971 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868A4DCB16B70F0700A5F971 /* Security.framework */; };
+		86A075C116F7E72300A8D5E6 /* BBUFollowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A075C016F7E72300A8D5E6 /* BBUFollowersViewController.m */; };
 		86AA88C316F75F5C0093D405 /* BBUAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86AA88C216F75F5C0093D405 /* BBUAboutViewController.m */; };
 		86AA88C716F75FC50093D405 /* avatar_donswelt@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86AA88C616F75FC50093D405 /* avatar_donswelt@2x.jpg */; };
 		86AA88C916F75FDC0093D405 /* avatar_neonacho@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86AA88C816F75FDC0093D405 /* avatar_neonacho@2x.jpg */; };
@@ -206,6 +207,8 @@
 		8689267516B6B4AE00B0822A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		868A4DBC16B70E1800A5F971 /* DropboxSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DropboxSDK.xcodeproj; path = vendor/dropbox/DropboxSDK/DropboxSDK.xcodeproj; sourceTree = "<group>"; };
 		868A4DCB16B70F0700A5F971 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		86A075BF16F7E72300A8D5E6 /* BBUFollowersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUFollowersViewController.h; sourceTree = "<group>"; };
+		86A075C016F7E72300A8D5E6 /* BBUFollowersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUFollowersViewController.m; sourceTree = "<group>"; };
 		86AA88C116F75F5C0093D405 /* BBUAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUAboutViewController.h; sourceTree = "<group>"; };
 		86AA88C216F75F5C0093D405 /* BBUAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUAboutViewController.m; sourceTree = "<group>"; };
 		86AA88C616F75FC50093D405 /* avatar_donswelt@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "avatar_donswelt@2x.jpg"; sourceTree = "<group>"; };
@@ -517,6 +520,8 @@
 				86AA88C216F75F5C0093D405 /* BBUAboutViewController.m */,
 				69E4BF0516A41B81004F8E3D /* BBUAppDelegate.h */,
 				69E4BF0616A41B81004F8E3D /* BBUAppDelegate.m */,
+				86A075BF16F7E72300A8D5E6 /* BBUFollowersViewController.h */,
+				86A075C016F7E72300A8D5E6 /* BBUFollowersViewController.m */,
 				86885FD716A7791300B454F8 /* BBUGalleryViewController.h */,
 				86885FD816A7791300B454F8 /* BBUGalleryViewController.m */,
 				8688600916A89D1D00B454F8 /* BBUSettingsViewController.h */,
@@ -747,6 +752,7 @@
 				86AA88FB16F79A220093D405 /* BBUAbstractPictureActivity.m in Sources */,
 				86AA890316F7AC4D0093D405 /* SSKeychain.m in Sources */,
 				86AA890616F7B10D0093D405 /* NSData+Base64.m in Sources */,
+				86A075C116F7E72300A8D5E6 /* BBUFollowersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

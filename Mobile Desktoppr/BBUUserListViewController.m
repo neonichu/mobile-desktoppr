@@ -11,13 +11,9 @@
 #import "DesktopprUser.h"
 #import "UIImageView+AFNetworking.h"
 
-// TODO: Switch between following / followers
-
 static NSString* const kCellIdentifier = @"UserCellIdentifier";
 
 @interface BBUUserListViewController () <UITableViewDataSource, UITabBarDelegate>
-
-@property (strong) NSArray* users;
 
 @end
 
@@ -28,6 +24,7 @@ static NSString* const kCellIdentifier = @"UserCellIdentifier";
 -(id)initWithUsers:(NSArray*)users {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
+        self.navigationItem.title = NSLocalizedString(@"Users", nil);
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
