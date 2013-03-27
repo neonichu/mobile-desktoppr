@@ -1,3 +1,5 @@
+# 1.0
+
 - [X] Implement ALL THE API calls from https://www.desktoppr.co/api
 - [X] Implement paging
 - [X] Use Grenobj for creating the model classes
@@ -14,10 +16,14 @@
 - [X] Launch images
 - [X] iPhone 5 support
 - [X] iPad support
-- [ ] App Store release
+- [X] App Store release
+
+# 1.1
+
 - [ ] Follow/Unfollow user (action button on all pictures page)
 - [ ] View list of liked wallpapers of a user
 - [ ] Display like/sync status of pictures
 - [ ] Display number of likes/syncs for pictures
 - [ ] Unlike individual pictures
 - [ ] Unsync individual pictures
+- [ ] Warn about resolution limit (1280x800px) when uploading pictures to Dropbox.
